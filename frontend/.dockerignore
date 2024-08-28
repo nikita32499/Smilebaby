@@ -1,0 +1,11 @@
+# Исключить директорию node_modules
+node_modules
+dist
+.next
+
+
+temp/
+*.tmp
+
+dockerfile
+.git

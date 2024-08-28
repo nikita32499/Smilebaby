@@ -1,0 +1,53 @@
+services:
+    nginx:
+        container_name: smilebaby_nginx
+        build:
+            context: "./nginx/"
+            dockerfile: dockerfile
+        ports:
+            - '80:80'
+        depends_on:
+            - nextjs
+    postgres:
+        container_name: smilebaby_postgres
+        expose:
+            - '5432'
+        environment:
+            - POSTGRES_PASSWORD=${DB_PASSWORD}
+            - POSTGRES_USER=${DB_USER}
+        image: postgres:16.4-alpine
+        volumes:
+            - /var/postgres_data:/var/lib/postgresql/data
+    
+    nestjs:
+        container_name: smilebaby_nestjs
+        build: 
+            context: './backend/'
+            dockerfile: dockerfile
+        expose:
+            - '3001'
+        # ports:
+        #   - '34560:34560'
+        env_file: .env.dev
+        command: npm run start:debug
+        depends_on:
+            - postgres
+        volumes:
+        - ./backend:/app  # Монтируем директорию с кодом внутрь контейнера
+        - /app/node_modules 
+    nextjs:
+        container_name: smilebaby_nextjs
+        build: 
+            context: './frontend/'
+            dockerfile: dockerfile
+        expose:
+            - '3000'
+        ports:
+          - "9229:9230"
+        command: npm run dev
+        depends_on:
+            - nestjs
+        volumes:
+        - ./frontend:/app  # Монтируем директорию с кодом внутрь контейнера
+        - /app/node_modules
+        env_file: .env.dev

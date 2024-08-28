@@ -1,0 +1,29 @@
+# Используем официальный образ Node.js в качестве основы
+FROM node:18-alpine
+ARG WORKDIR=app
+# Устанавливаем рабочую директорию внутри контейнера
+WORKDIR /${WORKDIR}
+
+COPY package.json .
+
+RUN npm install -g typescript
+
+RUN npm install
+# Копируем package.json и package-lock.json (если есть)
+COPY . .
+
+
+# Устанавливаем зависимости
+
+
+# Копируем остальные файлы проекта в рабочую директорию
+
+
+# Компилируем TypeScript код в JavaScript
+
+# Указываем команду для запуска приложения
+CMD ["next", "start"]
+
+# Указываем порт, который будет слушать приложение
+EXPOSE 3000
+EXPOSE 9229
