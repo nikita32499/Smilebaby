@@ -1,9 +1,17 @@
 import { z } from 'zod';
 import { Exactly, ZodSafe } from '../lib/zod';
-import { IFileCreate } from '../types/file.types';
+import { TFileUpload, TFileUploadResponse } from '../types/file.types';
 
-export const SchemaFileCreate = ZodSafe(
+export const SchemaFileUploadResponse = ZodSafe(
     z.object({
         path: z.string(),
     }),
-).infer<Exactly<IFileCreate>>();
+).infer<Exactly<TFileUploadResponse>>();
+
+export const SchemaFileUpload = ZodSafe(
+    z.object({
+        filename: z.string(),
+        mimetype: z.string(),
+        data: z.instanceof(Buffer),
+    }),
+).infer<Exactly<TFileUpload>>();

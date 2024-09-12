@@ -23,7 +23,7 @@ export class OrderModel implements IOrder {
     @Column({
         type: 'jsonb',
     })
-    declare items: IOrder['items'];
+    declare cart: IOrder['cart'];
 
     @Column({
         type: 'bigint',

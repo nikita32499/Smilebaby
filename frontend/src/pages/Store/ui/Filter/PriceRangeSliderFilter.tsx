@@ -1,27 +1,41 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactSlider from 'react-slider';
 import { useImmerState } from 'shared/hook/useImmerState';
 interface PriceRangeSliderProps {
-    minPrice: number;
-    maxPrice: number;
+    minPriceValue: number;
+    maxPriceValue: number;
     absoluteMaxPrice: number;
     absoluteMinPrice: number;
     onPriceChange: (min: number, max: number) => void;
 }
 
 interface IStatePriceRangeSlider {
-    minPrice: number;
-    maxPrice: number;
+    minPriceValue: number;
+    maxPriceValue: number;
 }
 
 export const PriceRangeSlider: React.FC<PriceRangeSliderProps> = (props) => {
     const [state, setState] = useImmerState<IStatePriceRangeSlider>({
-        minPrice: props.minPrice,
-        maxPrice: props.maxPrice,
+        minPriceValue: props.minPriceValue,
+        maxPriceValue: props.maxPriceValue,
     });
 
-    const maxPrice =
-        state.maxPrice > props.absoluteMaxPrice ? props.absoluteMaxPrice : state.maxPrice;
+    const maxPriceValue =
+        state.maxPriceValue > props.absoluteMaxPrice
+            ? props.absoluteMaxPrice
+            : state.maxPriceValue;
+    const updatePriceFilter = () => {
+        props.onPriceChange(state.minPriceValue, state.maxPriceValue);
+    };
+    useEffect(() => {
+        window.addEventListener('mouseup', updatePriceFilter);
+
+        return () => {
+            window.removeEventListener('mouseup', updatePriceFilter);
+        };
+    }, []);
+
+    const minDistance = (props.absoluteMaxPrice - props.absoluteMinPrice) / 100;
 
     return (
         <div
@@ -33,19 +47,19 @@ export const PriceRangeSlider: React.FC<PriceRangeSliderProps> = (props) => {
                     className='h-[6px] bg-[#888] w-full'
                     thumbClassName='w-[23px] h-[23px] rounded-full bg-[#fff] shadow-boxShadowFilter transform translate-y-[-37%]'
                     trackClassName=''
-                    defaultValue={[state.minPrice, state.maxPrice]}
+                    defaultValue={[state.minPriceValue, state.maxPriceValue]}
                     ariaLabel={['Lower thumb', 'Upper thumb']}
                     ariaValuetext={(state) => `Thumb value ${state.valueNow}`}
                     renderThumb={(props, state) => <div {...props}></div>}
                     pearling
                     min={props.absoluteMinPrice}
                     max={props.absoluteMaxPrice}
-                    minDistance={5}
+                    minDistance={minDistance}
                     onChange={([min, max]) => {
                         if (min === undefined || max === undefined) throw new Error();
                         setState((prev) => {
-                            prev.maxPrice = max;
-                            prev.minPrice = min;
+                            prev.maxPriceValue = max;
+                            prev.minPriceValue = min;
                         });
                         // props.onPriceChange(min, max);
                     }}
@@ -57,8 +71,9 @@ export const PriceRangeSlider: React.FC<PriceRangeSliderProps> = (props) => {
                         <input
                             type='number'
                             className='font-bold text-[15px] border-b-[1px] border-[#000] py-[4px] max-w-[150px]'
-                            defaultValue={state.minPrice}
-                            value={state.minPrice}
+                            defaultValue={state.minPriceValue}
+                            value={state.minPriceValue}
+                            onChange={updatePriceFilter}
                         />
                     </div>
                     <div className='bg-[#000] w-[15px] h-[1px]'></div>
@@ -66,21 +81,22 @@ export const PriceRangeSlider: React.FC<PriceRangeSliderProps> = (props) => {
                         <span className='text-[12px]'>Макс. цена</span>
                         <input
                             type='number'
-                            defaultValue={maxPrice}
-                            value={maxPrice}
+                            defaultValue={maxPriceValue}
+                            value={maxPriceValue}
                             className='font-bold text-[15px] border-b-[1px] border-[#000] py-[4px] max-w-[150px]'
+                            onChange={updatePriceFilter}
                         />
                     </div>
                 </div>
             </div>
-            <button
+            {/* <button
                 onClick={() => {
-                    props.onPriceChange(state.minPrice, state.maxPrice);
+                    props.onPriceChange(state.minPriceValue, state.maxPriceValue);
                 }}
                 className='rounded-[4px] bg-[#000] font-light text-[14px] text-white h-[44px] w-[184px] mt-[16px] ml-[12px]'
             >
                 Применить
-            </button>
+            </button> */}
         </div>
     );
 };

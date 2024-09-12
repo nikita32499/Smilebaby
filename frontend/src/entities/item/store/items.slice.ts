@@ -2,6 +2,12 @@
 
 import lodash from 'lodash';
 
+import { IPurchaseBase } from 'shared-smilebaby';
+
+export interface IPurchase extends IPurchaseBase {
+    avail: boolean;
+}
+
 interface IInitStateItems {
     meta: {
         absoluteMaxPrice: number;
@@ -18,20 +24,14 @@ interface IInitStateItems {
     cart: IPurchase[];
 }
 
-export type IPurchase = {
-    item: IItem;
-    size: IItem['amount'][number]['size'];
-    quantity: IItem['amount'][number]['quantity'];
-};
-
 const initialState: IInitStateItems = {
     meta: {
-        absoluteMaxPrice: Infinity,
+        absoluteMaxPrice: 9999999,
         absoluteMinPrice: 0,
     },
     filter: {
         sort: 'default',
-        price: { max: Infinity, min: 0 },
+        price: { max: 9999999, min: 0 },
         country: [],
         size: [],
         season: [],
@@ -42,7 +42,6 @@ const initialState: IInitStateItems = {
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { mergeAndRemoveDuplicates } from 'shared/helpers/object';
-import { IItem } from 'shared-smilebaby/dist/types/item.types';
 import { ItemApi } from '../api/item.api';
 import { findPurchase } from '../helper/cart';
 type DiscriminatedUnion<T> = {
@@ -51,31 +50,85 @@ type DiscriminatedUnion<T> = {
 
 type ISetFilter = DiscriminatedUnion<IInitStateItems['filter']>;
 
+type TActionDelete = Pick<IInitStateItems['cart'][number], 'size' | 'item'>;
+
 export const itemsSlice = createSlice({
     name: 'itemsSlice',
     initialState,
     reducers: {
-        addInCart: (state, action: PayloadAction<IInitStateItems['cart'][number]>) => {
-            const existItem = findPurchase(state.cart, action.payload.item);
+        toggleAvailForEveryPurchase: (state, action: PayloadAction<void>) => {
+            const selectAllState = state.cart.every((purchase) => purchase.avail);
+
+            state.cart = state.cart.map((purchase) => {
+                if (!selectAllState) {
+                    purchase.avail = true;
+                } else {
+                    purchase.avail = !purchase.avail;
+                }
+
+                return purchase;
+            });
+        },
+
+        deletePurchase: (state, action: PayloadAction<TActionDelete>) => {
+            let existItem = findPurchase(
+                state.cart,
+                action.payload.item.id,
+                action.payload.size,
+            );
             if (existItem) {
-                existItem.quantity += 1;
+                state.cart = state.cart.filter((purchase) => purchase !== existItem);
+            }
+        },
+
+        upsertPurchase: (
+            state,
+            action: PayloadAction<IInitStateItems['cart'][number]>,
+        ) => {
+            if (action.payload.quantity < 1) {
+                action.payload.quantity = 1;
+            }
+
+            const currentAmount = action.payload.item.amount.find(
+                (amount) => amount.size === action.payload.size,
+            );
+            if (!currentAmount) {
+                return;
+            }
+            if (action.payload.quantity > currentAmount.quantity) {
+                action.payload.quantity = currentAmount.quantity;
+            }
+            let existItem = findPurchase(
+                state.cart,
+                action.payload.item.id,
+                action.payload.size,
+            );
+            if (existItem) {
+                state.cart = state.cart.map((item) =>
+                    item === existItem ? action.payload : item,
+                );
             } else {
                 state.cart.push(action.payload);
             }
         },
-        removeFromCart: (
-            state,
-            action: PayloadAction<IInitStateItems['cart'][number]>,
-        ) => {
-            const existItem = findPurchase(state.cart, action.payload.item);
-            if (existItem) {
-                if (existItem.quantity - action.payload.quantity >= 1) {
-                    existItem.quantity -= action.payload.quantity;
-                } else {
-                    state.cart = state.cart.filter((purchase) => purchase !== existItem);
-                }
-            }
-        },
+
+        // removeFromCart: (
+        //     state,
+        //     action: PayloadAction<IInitStateItems['cart'][number]>,
+        // ) => {
+        //     const existItem = findPurchase(
+        //         state.cart,
+        //         action.payload.item.id,
+        //         action.payload.size,
+        //     );
+        //     if (existItem) {
+        //         if (existItem.quantity - action.payload.quantity >= 1) {
+        //             existItem.quantity -= action.payload.quantity;
+        //         } else {
+        //             state.cart = state.cart.filter((purchase) => purchase !== existItem);
+        //         }
+        //     }
+        // },
         setFilter: (state, action: PayloadAction<ISetFilter[]>) => {
             for (const option of action.payload) {
                 if (

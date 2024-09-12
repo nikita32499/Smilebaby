@@ -3,8 +3,6 @@
 import { Button, Card, Form, Image, Input, Select, Space, Typography } from 'antd';
 import Title from 'antd/es/typography/Title';
 import { EntriesApi } from 'entities/entries';
-import { useImmerState } from 'shared/hook/useImmerState';
-import { UploadImage } from 'shared/ui/UploadImage/UploadImage';
 import {
     SchemaEntriesCreate,
     SchemaEntriesUpdate,
@@ -14,6 +12,8 @@ import {
     IEntriesUnion,
     IEntriesUpsertData,
 } from 'shared-smilebaby/dist/types/entries.types';
+import { useImmerState } from 'shared/hook/useImmerState';
+import { UploadImage } from 'shared/ui/UploadImage/UploadImage';
 import { nameResolver } from '../../constants/constants';
 
 const { Option } = Select;
@@ -106,7 +106,7 @@ export const CreateUpdateEntries: FC<IPropsCreateUpdateEntries> = (props) => {
                             if (prev.newEntryData.name === EnumEntries.SECTION) {
                                 prev.newEntryData.data = {
                                     img: src,
-                                    slug: 'это строка должна быть заменена на стороне сервера',
+                                    slug: prev.newEntryData.data.slug ?? '',
                                 };
                             } else {
                                 throw new Error(

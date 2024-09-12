@@ -1,3 +1,7 @@
+'use client';
+import { useAppSelector } from 'shared/hook/redux-hooks';
+import { CustomLink } from 'shared/ui/CustomLink';
+
 interface IPropsLeftButton {
     text: string;
     href: string;
@@ -8,6 +12,8 @@ const LeftButton: FC<IPropsLeftButton> = (props) => {
 };
 
 export const HeaderWidget: FC = () => {
+    const cartList = useAppSelector((store) => store.itemsSlice.cart);
+
     const leftLinks: IPropsLeftButton[] = [
         {
             text: 'Витрина',
@@ -34,10 +40,16 @@ export const HeaderWidget: FC = () => {
                 <a href='/' className='m-auto'>
                     <img src='/asserts/svg/SmileBaby.svg' alt='' />
                 </a>
-                <div className='flex ml-auto'>
+                <CustomLink href={'/cart'} className='flex ml-auto relative'>
                     <img src='/asserts/svg/korzina.svg' alt='' />
                     <span className='ml-[6px] text-[16px]'>Корзина</span>
-                </div>
+
+                    {cartList.length > 0 && (
+                        <div className='absolute font-medium text-[14px] text-white bg-[#F93C00] rounded-full w-[18px] h-[18px] top-[-10px] left-[11px] center-content'>
+                            {cartList.length}
+                        </div>
+                    )}
+                </CustomLink>
             </div>
         </div>
     );

@@ -8,14 +8,15 @@ services:
             - '80:80'
         depends_on:
             - nextjs
+        
     postgres:
         container_name: smilebaby_postgres
+        image: postgres:16.4-alpine
         expose:
             - '5432'
-        environment:
-            - POSTGRES_PASSWORD=${DB_PASSWORD}
-            - POSTGRES_USER=${DB_USER}
-        image: postgres:16.4-alpine
+        ports:
+            - "15432:5432"
+        env_file: .env.dev
         volumes:
             - /var/postgres_data:/var/lib/postgresql/data
     
@@ -26,15 +27,15 @@ services:
             dockerfile: dockerfile
         expose:
             - '3001'
-        # ports:
-        #   - '34560:34560'
+        ports:
+          - '34560:34560'
         env_file: .env.dev
-        command: npm run start:debug
         depends_on:
             - postgres
         volumes:
-        - ./backend:/app  # Монтируем директорию с кодом внутрь контейнера
-        - /app/node_modules 
+        - ./backend/src:/app/src
+        - ./backend/types:/backend/types
+        - ./shared/:/shared:ro
     nextjs:
         container_name: smilebaby_nextjs
         build: 
@@ -43,11 +44,12 @@ services:
         expose:
             - '3000'
         ports:
-          - "9229:9230"
-        command: npm run dev
+          - "2222:22"
         depends_on:
             - nestjs
         volumes:
-        - ./frontend:/app  # Монтируем директорию с кодом внутрь контейнера
-        - /app/node_modules
+        - ./frontend/src:/app/src
+        - ./frontend/public:/app/public
+        - ./frontend/types:/app/types
+        - ./shared/:/shared:ro
         env_file: .env.dev

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { CustomLink } from 'shared/ui/CustomLink';
 
 export const Footer = () => {
     return (
@@ -31,9 +31,9 @@ export const Footer = () => {
                     <span className='text-[16px]'>email: emailemailedsf@mail.ru</span>
                 </div>
                 <div className='col-span-full row-span-1 *:text-[#888] flex gap-[11px] py-[11px] border-y-[1px] border-[#3A3A3A] mt-[30px]'>
-                    <Link href={'/store'}>Витрина</Link>
-                    <Link href={'#'}>О нас</Link>
-                    <Link href={'#'}>Контакты</Link>
+                    <CustomLink href={'/store'}>Витрина</CustomLink>
+                    <CustomLink href={'#'}>О нас</CustomLink>
+                    <CustomLink href={'#'}>Контакты</CustomLink>
                 </div>
                 <span className='col-span-full row-span-1 text-[#434] text-[14px] my-[30px]'>
                     Оставляя на сайте свои контактные данные, Вы даете согласие на

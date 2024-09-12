@@ -1,17 +1,20 @@
 import { z } from 'zod';
 import { Exactly, ZodSafe } from '../lib/zod';
-import { IOrder, IOrderCreate, IOrderUpdate } from '../types/order.types';
+import { IOrder, IOrderCreate, IOrderUpdate, IPurchaseBase } from '../types/order.types';
 import { SchemaItem } from './item.contract';
+
+export const SchemaPurchaseBase = ZodSafe(
+    z.object({
+        item: SchemaItem,
+        size: z.string(),
+        quantity: z.number(),
+    }),
+).infer<Exactly<IPurchaseBase>>();
+
 export const SchemaOrder = ZodSafe(
     z.object({
         id: z.number(),
-        items: z.array(
-            z.object({
-                item: SchemaItem,
-                size: z.string(),
-                quantity: z.number(),
-            }),
-        ),
+        cart: SchemaPurchaseBase.array(),
         phone: z.string(),
         name: z.string(),
         email: z.string().optional(),

@@ -1,29 +1,31 @@
-# Используем официальный образ Node.js в качестве основы
-FROM node:18-alpine
+FROM node:20
+
+RUN apt-get update && apt-get install -y openssh-server nano net-tools
+
+RUN echo "root:qwerty" | chpasswd
+RUN sed -i 's/^#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -i 's/^#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
 ARG WORKDIR=app
-# Устанавливаем рабочую директорию внутри контейнера
+
 WORKDIR /${WORKDIR}
 
 COPY package.json .
 
 RUN npm install -g typescript
 
-RUN npm install
-# Копируем package.json и package-lock.json (если есть)
+RUN npm i
+
 COPY . .
+# PermitRootLogin yes
+# PasswordAuthentication yes
 
+# RUN echo "NODE_ENV=production" > .env && \
+#     echo "PORT=3000" >> .env && \
+#     echo "API_KEY=your_api_key_here" >> .env
 
-# Устанавливаем зависимости
+RUN touch .env
 
+EXPOSE 3000 22
 
-# Копируем остальные файлы проекта в рабочую директорию
-
-
-# Компилируем TypeScript код в JavaScript
-
-# Указываем команду для запуска приложения
-CMD ["next", "start"]
-
-# Указываем порт, который будет слушать приложение
-EXPOSE 3000
-EXPOSE 9229
+CMD ["sh", "./docker-dev-launcher.sh"]

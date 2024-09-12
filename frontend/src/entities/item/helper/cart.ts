@@ -1,11 +1,22 @@
 import { IItem } from 'shared-smilebaby/dist/types/item.types';
-import { IPurchase } from '../model/items.slice';
+import { IPurchase } from '../store/items.slice';
 
-export const findPurchase = (cartList: IPurchase[], targetItem: IItem) => {
-    return cartList.find((purchase) => {
-        return (
-            purchase.item.id === targetItem.id &&
-            targetItem.amount.find((amount) => amount.size === purchase.size)
-        );
-    });
+export const findPurchase = (
+    cartList: IPurchase[],
+    itemId: IItem['id'],
+    size: string,
+) => {
+    return cartList.find((cardEl) => cardEl.item.id === itemId && cardEl.size === size);
+};
+
+export const getFinallyCount = (cart: IPurchase[]) => {
+    return cart.reduce<number>((acc, purchase) => {
+        return purchase.avail ? acc + purchase.quantity : acc;
+    }, 0);
+};
+
+export const getFinallyPrice = (cart: IPurchase[]) => {
+    return cart.reduce<number>((acc, purchase) => {
+        return purchase.avail ? acc + purchase.item.price * purchase.quantity : acc;
+    }, 0);
 };

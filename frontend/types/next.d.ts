@@ -12,3 +12,10 @@ type UiErrors = Record<string, string | null>;
 declare type UiState = {
     errors?: string;
 };
+declare module '@ant-design/icons';
+
+declare global{
+    interface RequestInit{
+        
+    }
+}

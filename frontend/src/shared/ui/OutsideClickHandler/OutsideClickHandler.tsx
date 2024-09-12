@@ -3,11 +3,13 @@ import { ReactNode, useEffect, useRef } from 'react';
 interface OutsideClickHandlerProps {
     children: ReactNode;
     onOutsideClick: () => void;
+    className?: string;
 }
 
 const OutsideClickHandler: FC<OutsideClickHandlerProps> = ({
     children,
     onOutsideClick,
+    className = '',
 }) => {
     const wrapperRef = useRef<HTMLDivElement | null>(null);
 
@@ -31,7 +33,11 @@ const OutsideClickHandler: FC<OutsideClickHandlerProps> = ({
         };
     }, [onOutsideClick]);
 
-    return <div ref={wrapperRef}>{children}</div>;
+    return (
+        <div ref={wrapperRef} className={className}>
+            {children}
+        </div>
+    );
 };
 
 export default OutsideClickHandler;

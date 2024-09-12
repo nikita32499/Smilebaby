@@ -8,7 +8,6 @@ import Title from 'antd/es/typography/Title';
 import { useErrorHookForm } from 'shared/hook/useErrorHookForm';
 
 import { useRouter } from 'next/navigation';
-import { getErrorRTK } from 'shared/helpers/RTK-query';
 import { useActions } from 'shared/hook/redux-hooks';
 
 import { UserApi } from 'entities/user/';

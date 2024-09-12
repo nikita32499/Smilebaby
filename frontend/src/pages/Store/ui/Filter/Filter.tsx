@@ -1,9 +1,9 @@
 import cn from 'classnames';
 import { PropsWithChildren } from 'react';
+import { IItem } from 'shared-smilebaby/dist/types/item.types';
 import { useActions, useAppSelector } from 'shared/hook/redux-hooks';
 import { useImmerState } from 'shared/hook/useImmerState';
 import OutsideClickHandler from 'shared/ui/OutsideClickHandler/OutsideClickHandler';
-import { IItem } from 'shared-smilebaby/dist/types/item.types';
 import { FlagPanelFilter } from './FlagPanelFilter';
 import { convertToOptions } from './helpers/convertToOptions';
 import PriceRangeSlider from './PriceRangeSliderFilter';
@@ -37,10 +37,10 @@ const FilterButton: FC<IPropsFilterButton> = (props) => {
     };
 
     return (
-        <OutsideClickHandler onOutsideClick={handleOutsideClick}>
+        <OutsideClickHandler onOutsideClick={handleOutsideClick} className='w-max'>
             <button
                 className={cn(
-                    'h-[35px] px-[9px] w-max rounded-[5px] border-[#E5E5E5] border-[1px] relative',
+                    'h-[35px]  w-max rounded-[5px] border-[#E5E5E5] border-[1px] relative',
                     active ? 'bg-[#000]' : 'bg-[#fff]',
                 )}
                 onClick={() => {
@@ -49,18 +49,22 @@ const FilterButton: FC<IPropsFilterButton> = (props) => {
                     });
                 }}
             >
-                <span className={active ? 'text-[#fff] ' : ''}>{text}</span>
+                <div className='px-[9px]'>
+                    <span className={active ? 'text-[#fff] ' : ''}>{text}</span>
 
-                {state.flow.open && children}
-                <img
-                    className='inline ml-[7px]'
-                    src={
-                        active
-                            ? '/asserts/svg/rowToDownWhite.svg'
-                            : '/asserts/svg/rowToDownBlack.svg'
-                    }
-                    alt=''
-                />
+                    <img
+                        className='inline ml-[7px]'
+                        src={
+                            active
+                                ? '/asserts/svg/rowToDownWhite.svg'
+                                : '/asserts/svg/rowToDownBlack.svg'
+                        }
+                        alt=''
+                    />
+                </div>
+                <div style={{ transform: 'translateY(9px)' }}>
+                    {state.flow.open && children}
+                </div>
             </button>
         </OutsideClickHandler>
     );
@@ -171,11 +175,11 @@ export const Filter: FC<IPropsFilter> = (props) => {
             </FilterButton>
             <FilterButton
                 text={'Цена'}
-                active={priceFilterValue.min !== 0 || priceFilterValue.max !== Infinity}
+                active={priceFilterValue.min !== 0 || priceFilterValue.max !== 9999999}
             >
                 <PriceRangeSlider
-                    maxPrice={priceFilterValue.max}
-                    minPrice={priceFilterValue.min}
+                    maxPriceValue={priceFilterValue.max}
+                    minPriceValue={priceFilterValue.min}
                     absoluteMaxPrice={absoluteMaxPrice}
                     absoluteMinPrice={absoluteMinPrice}
                     onPriceChange={(min, max) => {

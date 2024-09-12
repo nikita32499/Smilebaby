@@ -1,50 +1,42 @@
 'use client';
 import { store } from 'app/_providers/store';
 import { ItemApi, useFilterItem } from 'entities/item';
-import { useLayoutEffect } from 'react';
-import { useImmerState } from 'shared/hook/useImmerState';
+import { memo, useLayoutEffect } from 'react';
 import { IEntriesSection } from 'shared-smilebaby/dist/types/entries.types';
 import { IItem } from 'shared-smilebaby/dist/types/item.types';
 import { Filter } from '../Filter/Filter';
 import { ItemList } from '../Item/ItemList';
-interface IPropsStore {
+interface IStateStore {
     items: IItem[];
-    sections: IEntriesSection[];
-    sectionSlug: string;
+    currentSection: IEntriesSection | undefined;
 }
 
-interface IStateStore extends Pick<IPropsStore, 'sections'> {}
+export const StoreClient: FC<IStateStore> = memo(
+    (props) => {
+        const { currentSection, items } = props;
 
-export const StoreClient: FC<IPropsStore> = (props) => {
-    const { sectionSlug } = props;
-    const [state, setState] = useImmerState<IStateStore>({
-        sections: props.sections,
-    });
+        useLayoutEffect(() => {
+            store.dispatch(ItemApi.endpoints.getAll.initiate());
+            store.dispatch(
+                ItemApi.util.updateQueryData('getAll', undefined, () => props.items),
+            );
+        }, []);
 
-    useLayoutEffect(() => {
-        store.dispatch(
-            ItemApi.util.updateQueryData('getAll', undefined, () => props.items),
-        );
-    }, []);
-    const { data: items = props.items } = ItemApi.useGetAllQuery();
+        const filteredItem = useFilterItem(items, currentSection);
 
-    const currentSection = state.sections.find(
-        (section) => (section.data.slug = sectionSlug),
-    );
-
-    const filteredItem = useFilterItem(items, currentSection);
-
-    return (
-        <div className='mt-[24px]'>
-            <h1 className='text-black text-[28px] font-extrabold '>
-                {currentSection?.value ?? 'Все товары'}
-            </h1>
-            <div>
-                <Filter items={props.items} />
-                <div className='mt-[15px]'>
-                    <ItemList items={filteredItem} />
+        return (
+            <div className='my-[24px]'>
+                <h1 className='text-black text-[28px] font-extrabold '>
+                    {currentSection?.value ?? 'Все товары'}
+                </h1>
+                <div>
+                    <Filter items={props.items} />
+                    <div className='mt-[15px]'>
+                        <ItemList items={filteredItem} />
+                    </div>
                 </div>
             </div>
-        </div>
-    );
-};
+        );
+    },
+    () => false,
+);

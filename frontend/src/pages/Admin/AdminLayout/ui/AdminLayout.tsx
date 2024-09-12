@@ -1,8 +1,8 @@
 'use client';
 
 import { Button, Flex, Layout, List } from 'antd';
-import Link from 'next/link';
 import { FC, PropsWithChildren } from 'react';
+import { CustomLink } from 'shared/ui/CustomLink';
 
 const { Content } = Layout;
 
@@ -40,9 +40,9 @@ export const AdminLayout: FC<PropsWithChildren> = (props) => {
                     renderItem={({ href, text }) => (
                         <List.Item>
                             <Button type='primary' className='w-full'>
-                                <Link href={href} style={{ color: 'inherit' }}>
+                                <CustomLink href={href} style={{ color: 'inherit' }}>
                                     {text}
-                                </Link>
+                                </CustomLink>
                             </Button>
                         </List.Item>
                     )}

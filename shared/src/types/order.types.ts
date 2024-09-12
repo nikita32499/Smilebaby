@@ -3,16 +3,19 @@ import { IItem } from './item.types';
 
 export type IOrder = {
     id: number;
-    items: {
-        item: IItem;
-        size: string;
-        quantity: number;
-    }[];
+    cart: IPurchaseBase[];
     phone: string;
     name: string;
     email?: string | undefined;
 
     createdAt: number;
+};
+
+export type IPurchaseBase = {
+    item: IItem;
+
+    size: IItem['amount'][number]['size'];
+    quantity: IItem['amount'][number]['quantity'];
 };
 
 export type IOrderCreateData = Omit<IOrder, 'id' | 'createdAt'>;

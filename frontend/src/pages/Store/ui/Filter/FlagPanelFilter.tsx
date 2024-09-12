@@ -32,14 +32,6 @@ export const FlagPanelFilter: FC<IPropsFlagPanelFilter> = (props) => {
                     );
                 })}
             </div>
-            {/* <div className='w-full border-t-[1px] border-[#BFBFBF] '>
-                <button
-                    className='max-w-[184px] w-full h-[44px] my-[16px] rounded-[4px] bg-[#000] font-light text-[14px] text-[#fff]'
-                    onClick={() => {}}
-                >
-                    Применить
-                </button>
-            </div> */}
         </div>
     );
 };

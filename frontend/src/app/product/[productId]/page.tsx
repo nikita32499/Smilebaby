@@ -1,13 +1,20 @@
-import { nextGetAllEntries } from 'entities/entries';
+import { nextGetAllItems } from 'entities/item';
+import { GetStaticPaths } from 'next';
 import { ProductPage } from 'pages/Product';
-import { mapSECTION } from 'shared/helpers/entries';
 
 export default ProductPage;
 
-export async function generateStaticParams() {
-    const sections = mapSECTION(await nextGetAllEntries());
+export const getStaticPaths: GetStaticPaths = async () => {
+    const itemList = await nextGetAllItems();
 
-    return sections.map((section) => {
-        productId: section.data.slug;
-    });
-}
+    const paths = itemList.map((item) => ({
+        params: {
+            productId: item.id.toString(),
+        },
+    }));
+
+    return {
+        paths,
+        fallback: false,
+    };
+};

@@ -21,7 +21,7 @@ export class JwtAuthGuard implements CanActivate {
         const request = context.switchToHttp().getRequest<Request>();
         const response = context.switchToHttp().getResponse<Response>();
 
-        if (request.ip?.includes('127.0.0.1')) return true;
+        if (request.headers['access-token'] === process.env['ACCESS_TOKEN']) return true;
 
         const roles = this.reflector.get<string[]>('roles', context.getHandler()) ?? [];
 

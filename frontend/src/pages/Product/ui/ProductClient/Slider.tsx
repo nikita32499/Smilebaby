@@ -1,5 +1,5 @@
-import { useImmerState } from 'shared/hook/useImmerState';
 import { IItem } from 'shared-smilebaby/dist/types/item.types';
+import { useImmerState } from 'shared/hook/useImmerState';
 
 interface IPropsSlider {
     item: IItem;
@@ -20,14 +20,18 @@ export const Slider: FC<IPropsSlider> = (props) => {
 
     return (
         <div className='flex gap-[8px] '>
-            <img src={bigImage} alt='' className='max-h-[407px]' />
-            <div className='flex flex-col gap-[8px]'>
+            <img
+                src={bigImage}
+                alt=''
+                className='max-h-[407px] rounded-[10px] shadow-lg'
+            />
+            <div className='flex flex-col gap-[8px] w-max'>
                 {otherImages.map((image) => {
                     return (
                         <img
                             src={image}
                             alt=''
-                            className='h-[77px]'
+                            className='h-[77px] rounded-[4px] shadow-lg'
                             onClick={() => {
                                 setState((prev) => {
                                     const index = prev.images.findIndex(

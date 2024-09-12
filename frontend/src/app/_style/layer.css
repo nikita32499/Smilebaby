@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.center-content {
+    @apply flex justify-center items-center;
+}
+
+@layer utilities {
+    .card-box-on-focus {
+        transform: translateX(-10px) translateY(-10px);
+        padding: 10px;
+        width: calc(100% + 20px);
+        box-shadow: 0 4px 8px #0006;
+        border-radius: 4px;
+        background: #fff;
+    }
+
+    .U-center-content {
+        @apply flex justify-center items-center;
+    }
+
+    .shadow-boxShadowButton {
+        box-shadow: 0 2px 5px #0003;
+    }
+
+    .shadow-boxShadowFilter {
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    }
+}

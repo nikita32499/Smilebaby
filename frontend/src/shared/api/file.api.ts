@@ -1,4 +1,4 @@
-import { SchemaFileCreate } from 'shared-smilebaby/dist/contract/file.contract';
+import { SchemaFileUploadResponse } from 'shared-smilebaby/dist/contract/file.contract';
 import { appAxios } from './axios';
 export const uploadOne = async (file: File) => {
     const formData = new FormData();
@@ -12,5 +12,5 @@ export const uploadOne = async (file: File) => {
         },
     });
 
-    return SchemaFileCreate.parse(response.data);
+    return SchemaFileUploadResponse.parse(response.data);
 };

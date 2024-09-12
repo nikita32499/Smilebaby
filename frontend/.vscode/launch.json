@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Chrome",
+            "name": "!!!!!Launch Chrome",
             "request": "launch",
             "type": "chrome",
             "url": "http://127.0.0.1",
@@ -14,7 +14,7 @@
             "skipFiles": ["<node_internals>/**", "node_modules/**"],
             "userDataDir": "${workspaceFolder}/.vscode/chrome",
             "runtimeArgs": [
-                "--disable-extensions",
+                // "--disable-extensions",
                 "--disable-gpu",
                 "--disable-dev-shm-usage",
                 "--no-sandbox",
@@ -22,27 +22,10 @@
             ]
         },
         {
-            "name": "Next.js:9229",
+            "name": "!!!!Next.js",
             "type": "node-terminal",
             "request": "launch",
-            "command": "npm run dev"
-        },
-        {
-            "name": "Attach",
-            "port": 9229,
-            "request": "attach",
-            "skipFiles": ["<node_internals>/**"],
-            "type": "node"
-        },
-        {
-            "type": "node",
-            "request": "attach",
-            "name": "Attach to Docker",
-            "address": "localhost",
-            "port": 9229,
-            "restart": true,
-            "localRoot": "${workspaceFolder}",
-            "remoteRoot": "/app"
+            "command": "pkill -f '/app/node_modules/.bin/next dev' && sleep 2 && npm run dev"
         }
     ]
 }

@@ -10,7 +10,7 @@ pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
-
+.env*
 # OS
 .DS_Store
 
@@ -37,5 +37,4 @@ tsconfig.tsbuildinfo
 !.vscode/extensions.json
 
 
-/uploads/*
 /shared

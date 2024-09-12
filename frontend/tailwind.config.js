@@ -7,9 +7,6 @@ module.exports = {
                 rubik: ['var(--font-rubik)'],
                 inter: ['var(--font-inter)'],
             },
-            boxShadow: {
-                boxShadowFilter: '0 4px 10px  rgba(0, 0, 0, 0.25)',
-            },
         },
     },
     variants: {},
@@ -30,6 +27,9 @@ module.exports = {
             for (let i = 1; i <= 12; i++) {
                 newUtilities[`.grid-rows-${i}-max`] = {
                     'grid-template-rows': `repeat(${i}, max-content)`,
+                };
+                newUtilities[`.grid-cols-${i}-max`] = {
+                    'grid-template-columns': `repeat(${i}, max-content)`,
                 };
             }
 

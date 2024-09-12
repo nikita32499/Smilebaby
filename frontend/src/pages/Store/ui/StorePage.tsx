@@ -1,20 +1,23 @@
+'use server';
 import { nextGetAllEntries } from 'entities/entries';
 import { nextGetAllItems } from 'entities/item';
 import { mapSECTION } from 'shared/helpers/entries';
-import { PageParams } from 'shared/types/params';
 import { SectionWidget } from 'widgets/Section';
 import { StoreClient } from './StoreClient/StoreClient';
 
-interface IPropsStorePage extends PageParams {
+interface IPropsStorePage {
     params: {
         sectionSlug: string;
     };
 }
 
 export const StorePage: FC<IPropsStorePage> = async (props) => {
-    const { params } = props;
-    const items = await nextGetAllItems();
+    const {
+        params: { sectionSlug },
+    } = props;
+    const items = await nextGetAllItems(); // Загружаем все items
     const sections = mapSECTION(await nextGetAllEntries());
+    const currentSection = sections.find((section) => section.data.slug === sectionSlug);
 
     return (
         <>
@@ -22,7 +25,7 @@ export const StorePage: FC<IPropsStorePage> = async (props) => {
                 <SectionWidget />
             </div>
 
-            <StoreClient {...{ sectionSlug: params.sectionSlug, items, sections }} />
+            <StoreClient {...{ currentSection, items }} />
         </>
     );
 };
