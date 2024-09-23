@@ -1,7 +1,6 @@
-'server-only';
 import { nextGetAllEntries } from 'entities/entries';
 import { GetStaticPaths } from 'next';
-import { StorePage } from 'pages/Store';
+import { StorePage } from 'page/Store';
 import { mapSECTION } from 'shared/helpers/entries';
 
 export default StorePage;

@@ -6,7 +6,7 @@ import {
     EnumEntries,
     IEntriesCreate,
     IEntriesUpdate,
-} from 'shared-smilebaby/dist/types/entries.types';
+} from 'shared-smilebaby';
 import { Repository } from 'typeorm';
 import { EntriesModel } from './entries.model';
 import { IEntriesRepository } from './types/EntriesRepository.types';

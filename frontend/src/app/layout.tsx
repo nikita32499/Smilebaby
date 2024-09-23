@@ -1,4 +1,3 @@
-import { Inter, Rubik } from 'next/font/google';
 import { PropsWithChildren } from 'react';
 import ErrorBoundary from 'shared/ui/ErrorBoundary/ErrorBoundary';
 import { HeaderWidget } from 'widgets/Header';
@@ -9,24 +8,18 @@ import './_style/layer.css';
 import cn from 'classnames';
 import { Footer } from 'widgets/Footer';
 
-const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
+// const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
 
-const rubik = Rubik({
-    subsets: ['latin'],
-    display: 'swap',
-    variable: '--font-rubik',
-});
+// const rubik = Rubik({
+//     subsets: ['latin'],
+//     display: 'swap',
+//     variable: '--font-rubik',
+// });
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
     return (
         <html lang='en'>
-            <body
-                className={cn(
-                    inter.className,
-                    rubik.className,
-                    'flex flex-col min-h-screen',
-                )}
-            >
+            <body className={cn('flex flex-col min-h-screen')}>
                 <ReduxProvider>
                     <ErrorBoundary>
                         <HeaderWidget />

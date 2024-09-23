@@ -1,0 +1,11 @@
+# Исключить директорию node_modules
+*/frontend/node_modules
+dist
+.next
+
+temp/
+*.tmp
+
+dockerfile
+.git
+.gitignore

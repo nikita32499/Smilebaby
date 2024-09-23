@@ -1,4 +1,4 @@
-import { IItem } from 'shared-smilebaby/dist/types/item.types';
+import { IItem } from 'shared-smilebaby';
 import { IPurchase } from '../store/items.slice';
 
 export const findPurchase = (

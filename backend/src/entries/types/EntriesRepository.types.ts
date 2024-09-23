@@ -2,7 +2,7 @@ import {
     IEntriesBase,
     IEntriesCreate,
     IEntriesUpdate,
-} from 'shared-smilebaby/dist/types/entries.types';
+} from 'shared-smilebaby';
 
 export interface IEntriesRepository {
     getAll: () => Promise<IEntriesBase[]>;

@@ -5,8 +5,8 @@ import { ZodValidator } from 'shared/helpers/RTK-query';
 import {
     SchemaItem,
     SchemaItemArray,
-} from 'shared-smilebaby/dist/contract/item.contract';
-import { IItemCreate, IItemUpdate } from 'shared-smilebaby/dist/types/item.types';
+} from 'shared-smilebaby';
+import { IItemCreate, IItemUpdate } from 'shared-smilebaby';
 
 import { z } from 'zod';
 

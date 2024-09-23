@@ -1,8 +1,8 @@
-'server-only';
+ 
 
 import { nextGetAllEntries } from 'entities/entries';
 
-import { IEntriesSection } from 'shared-smilebaby/dist/types/entries.types';
+import { IEntriesSection } from 'shared-smilebaby';
 import { mapSECTION } from 'shared/helpers/entries';
 import { CustomLink } from 'shared/ui/CustomLink';
 

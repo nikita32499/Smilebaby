@@ -4,8 +4,8 @@ import { ZodValidator } from 'shared/helpers/RTK-query';
 import {
     SchemaViewUnion,
     SchemaViewUnionArray,
-} from 'shared-smilebaby/dist/contract/view.contract';
-import { ICreateView } from 'shared-smilebaby/dist/types/view.types';
+} from 'shared-smilebaby';
+import { ICreateView } from 'shared-smilebaby';
 import { z } from 'zod';
 
 export const ViewApi = createApi({

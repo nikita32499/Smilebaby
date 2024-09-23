@@ -2,7 +2,7 @@ import { createZodDto } from 'nestjs-zod';
 import {
     SchemaUserCreate,
     SchemaUserUpdate,
-} from 'shared-smilebaby/dist/contract/user.contract';
+} from 'shared-smilebaby';
 
 export class DtoUserCreate extends createZodDto(SchemaUserCreate) {}
 

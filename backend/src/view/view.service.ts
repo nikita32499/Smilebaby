@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import {
     EnumViewNames,
     IViewCreateUnion,
-} from 'shared-smilebaby/dist/types/view-custom.types';
+} from 'shared-smilebaby';
 import { Repository } from 'typeorm';
 import { IViewRepository } from './types/ViewRepository.types';
 import { ViewModel } from './view.model';

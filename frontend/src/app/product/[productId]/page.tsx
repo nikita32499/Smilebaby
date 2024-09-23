@@ -1,6 +1,6 @@
 import { nextGetAllItems } from 'entities/item';
 import { GetStaticPaths } from 'next';
-import { ProductPage } from 'pages/Product';
+import { ProductPage } from 'page/Product';
 
 export default ProductPage;
 

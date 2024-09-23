@@ -1,4 +1,5 @@
 export * from './contract/entries.contract';
+export * from './contract/file.contract';
 export * from './contract/item.contract';
 export * from './contract/order.contract';
 export * from './contract/user.contract';

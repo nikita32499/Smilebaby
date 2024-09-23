@@ -1,5 +1,5 @@
 import { ColumnNumberTransformer } from '_helpers/typeOrm';
-import { IUser, UserRole } from 'shared-smilebaby/dist/types/user.types';
+import { IUser, UserRole } from 'shared-smilebaby';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

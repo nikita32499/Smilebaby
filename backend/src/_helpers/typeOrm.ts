@@ -23,3 +23,13 @@ export class EntriesColumnTransformer {
         return data.value;
     }
 }
+
+export class OptionalColumnTransformer {
+    public to(data: string): string | null {
+        return data === '' ? null : data;
+    }
+
+    public from(data: string | null): string {
+        return data ?? '';
+    }
+}

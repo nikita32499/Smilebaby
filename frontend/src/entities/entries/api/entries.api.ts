@@ -5,11 +5,11 @@ import { ZodValidator } from 'shared/helpers/RTK-query';
 import {
     SchemaEntriesArrayUnion,
     SchemaEntriesUnion,
-} from 'shared-smilebaby/dist/contract/entries.contract';
+} from 'shared-smilebaby';
 import {
     IEntriesCreate,
     IEntriesUpdate,
-} from 'shared-smilebaby/dist/types/entries.types';
+} from 'shared-smilebaby';
 
 import { z } from 'zod';
 

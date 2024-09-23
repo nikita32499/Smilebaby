@@ -17,15 +17,15 @@ export const HeaderWidget: FC = () => {
     const leftLinks: IPropsLeftButton[] = [
         {
             text: 'Витрина',
-            href: '',
+            href: '/store',
         },
         {
             text: 'О нас',
-            href: '',
+            href: '/about-us',
         },
         {
             text: 'Контакты',
-            href: '',
+            href: '/contact',
         },
     ];
 
@@ -45,7 +45,7 @@ export const HeaderWidget: FC = () => {
                     <span className='ml-[6px] text-[16px]'>Корзина</span>
 
                     {cartList.length > 0 && (
-                        <div className='absolute font-medium text-[14px] text-white bg-[#F93C00] rounded-full w-[18px] h-[18px] top-[-10px] left-[11px] center-content'>
+                        <div className='absolute font-medium text-[14px] text-white bg-[#F93C00] rounded-full w-[18px] h-[18px] top-[-14px] left-[11px] center-content'>
                             {cartList.length}
                         </div>
                     )}

@@ -1,9 +1,8 @@
-'server-only';
-import { SchemaEntriesUnion } from 'shared-smilebaby/dist/contract/entries.contract';
-import { IEntriesUnion } from 'shared-smilebaby/dist/types/entries.types';
+ 
+import { IEntriesUnion, SchemaEntriesUnion } from 'shared-smilebaby'
 
 export const nextGetAllEntries = async (): Promise<IEntriesUnion[]> => {
-    const entries = await fetch(`${process.env['API_URL']!}/entries/getAll`, {
+    const entries = await fetch(`${process.env['API_URL']}/entries/getAll`, {
         method: 'GET',
     });
 

@@ -1,5 +1,5 @@
 import { createZodDto } from 'nestjs-zod';
 
-import { SchemaFileUpload } from 'shared-smilebaby/dist/contract/file.contract';
+import { SchemaFileUpload } from 'shared-smilebaby';
 
 export class DtoFileUpload extends createZodDto(SchemaFileUpload) {}

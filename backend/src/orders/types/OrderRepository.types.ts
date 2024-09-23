@@ -2,7 +2,7 @@ import {
     IOrder,
     IOrderCreate,
     IOrderUpdate,
-} from 'shared-smilebaby/dist/types/order.types';
+} from 'shared-smilebaby';
 
 export interface IOrderRepository {
     getAll: () => Promise<IOrder[]>;

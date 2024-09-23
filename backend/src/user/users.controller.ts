@@ -9,7 +9,7 @@ import {
     Post,
 } from '@nestjs/common';
 import { Roles } from '_decorators/Roles';
-import { IUser, UserRole } from 'shared-smilebaby/dist/types/user.types';
+import { IUser, UserRole } from 'shared-smilebaby';
 import { DtoUserCreate, DtoUserUpdate } from './dto/user.dto';
 import { UsersService } from './users.service';
 

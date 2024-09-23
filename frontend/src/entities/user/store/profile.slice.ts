@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { IUser } from 'shared-smilebaby/dist/types/user.types';
+import { IUser } from 'shared-smilebaby';
 
 interface IInitStateProfile {
     user: IUser | null;

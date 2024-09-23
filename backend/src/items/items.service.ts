@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-// import { IItemCreate, IItemCreate } from 'shared-smilebaby/dist/types/items.types';
+// import { IItemCreate, IItemCreate } from 'shared-smilebaby';
 
 import { createSlug } from '_helpers/slug';
 import { isUpdateSuccess } from '_helpers/typeOrm';
-import { IItemCreate, IItemUpdate } from 'shared-smilebaby/dist/types/item.types';
+import { IItemCreate, IItemUpdate } from 'shared-smilebaby';
 import { Repository } from 'typeorm';
 import { ItemModel } from './items.model';
 import { IItemRepository } from './types/ItemRepository.types';

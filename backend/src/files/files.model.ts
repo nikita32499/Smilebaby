@@ -1,4 +1,4 @@
-import { TFile } from 'shared-smilebaby/dist/types/file.types';
+import { TFile } from 'shared-smilebaby';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

@@ -1,7 +1,7 @@
-'use server';
+ 
 
-import { SchemaJwtUserData } from 'shared-smilebaby/dist/contract/user.contract';
-import { IJwtUserData } from 'shared-smilebaby/dist/types/user.types';
+import { SchemaJwtUserData } from 'shared-smilebaby';
+import { IJwtUserData } from 'shared-smilebaby';
 
 export const validateToken = async (token: string): Promise<IJwtUserData | false> => {
     const response = await fetch(`${process.env['API_URL']}/auth/validateToken`, {

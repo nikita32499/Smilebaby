@@ -3,7 +3,7 @@ import {
     IEntriesBase,
     IEntriesSection,
     IEntriesUnion,
-} from 'shared-smilebaby/dist/types/entries.types';
+} from 'shared-smilebaby';
 
 export function isIEntriesSection(entry: IEntriesUnion): entry is IEntriesSection {
     return entry.name === EnumEntries.SECTION;

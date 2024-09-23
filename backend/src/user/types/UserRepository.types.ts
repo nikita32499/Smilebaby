@@ -3,7 +3,7 @@ import {
     IUserCreate,
     IUserUpdate,
     UserRole,
-} from 'shared-smilebaby/dist/types/user.types';
+} from 'shared-smilebaby';
 
 export interface IUserRepository {
     getAll: () => Promise<IUser[]>;

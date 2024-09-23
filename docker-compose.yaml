@@ -24,7 +24,7 @@ services:
         container_name: smilebaby_nestjs
         build: 
             context: './backend/'
-            dockerfile: dockerfile
+            dockerfile: dockerfile.dev
         expose:
             - '3001'
         ports:
@@ -40,7 +40,7 @@ services:
         container_name: smilebaby_nextjs
         build: 
             context: './frontend/'
-            dockerfile: dockerfile
+            dockerfile: dockerfile.dev
         expose:
             - '3000'
         ports:
@@ -51,5 +51,7 @@ services:
         - ./frontend/src:/app/src
         - ./frontend/public:/app/public
         - ./frontend/types:/app/types
+        - ./frontend/next.config.mjs:/app/next.config.mjs
+        - ./frontend/postcss.config.js:/app/postcss.config.js
         - ./shared/:/shared:ro
         env_file: .env.dev

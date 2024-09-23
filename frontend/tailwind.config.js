@@ -7,9 +7,15 @@ module.exports = {
                 rubik: ['var(--font-rubik)'],
                 inter: ['var(--font-inter)'],
             },
+            // screens: {
+            //     'max-sm': '500px',
+            // },
         },
     },
     variants: {},
+
+    // mode: 'jit',
+    // purge: ['./src/**/*.{js,ts,jsx,tsx}'],
     plugins: [
         function ({ addUtilities }) {
             const newUtilities = {

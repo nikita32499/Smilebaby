@@ -1,8 +1,8 @@
 'use client';
 
 import { useAppSelector } from 'shared/hook/redux-hooks';
-import { IEntriesSection } from 'shared-smilebaby/dist/types/entries.types';
-import { IItem } from 'shared-smilebaby/dist/types/item.types';
+import { IEntriesSection } from 'shared-smilebaby';
+import { IItem } from 'shared-smilebaby';
 
 type TSortCases = { [key: string]: (a: IItem, b: IItem) => number };
 

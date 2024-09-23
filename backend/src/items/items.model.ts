@@ -1,6 +1,6 @@
 import { ColumnNumberTransformer } from '_helpers/typeOrm';
 import { EntriesModel } from 'entries/entries.model';
-import { IItem } from 'shared-smilebaby/dist/types/item.types';
+import { IItem } from 'shared-smilebaby';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

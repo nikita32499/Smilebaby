@@ -1,5 +1,5 @@
 import { SetMetadata } from '@nestjs/common';
-import { UserRole } from 'shared-smilebaby/dist/types/user.types';
+import { UserRole } from 'shared-smilebaby';
 
 export const Roles = (...roles: (UserRole | 'public')[]) => SetMetadata('roles', roles);
 

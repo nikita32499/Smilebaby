@@ -1,10 +1,5 @@
 import { Injectable, OnModuleInit } from '@nestjs/common';
-import {
-    IUser,
-    IUserCreate,
-    IUserUpdate,
-    UserRole,
-} from 'shared-smilebaby/dist/types/user.types';
+import { IUser, IUserCreate, IUserUpdate, UserRole } from 'shared-smilebaby';
 
 import { InjectRepository } from '@nestjs/typeorm';
 

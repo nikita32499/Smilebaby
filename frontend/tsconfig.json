@@ -62,5 +62,5 @@
         ".next/types/**/*.ts",
         "main.ts"
     ],
-    "exclude": ["node_modules", ".next"]
+    "exclude": ["node_modules", ".next", "temp"]
 }

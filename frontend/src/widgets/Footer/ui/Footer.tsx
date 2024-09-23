@@ -25,7 +25,7 @@ export const Footer = () => {
                         </button>
                     </div>
                 </div>
-                <div className='flex flex-col items-end text-[#888]'>
+                <div className='flex flex-col items-end text-[#888] gap-y-[7px]'>
                     <span className='text-[24px]'>+7 900 555-35-35</span>
                     <span className='text-[16px]'>Ежедневно с 09:00 до 21:00</span>
                     <span className='text-[16px]'>email: emailemailedsf@mail.ru</span>

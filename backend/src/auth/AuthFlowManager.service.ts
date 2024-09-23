@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { IJwtUserData } from 'shared-smilebaby/dist/types/user.types';
+import { IJwtUserData } from 'shared-smilebaby';
 import { UsersService } from 'user/users.service';
 import { AuthService } from './auth.service';
 import { IAuthFlowManager } from './types/AuthFlowManager.types';

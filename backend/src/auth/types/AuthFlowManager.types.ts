@@ -1,4 +1,4 @@
-import { IUser } from 'shared-smilebaby/dist/types/user.types';
+import { IUser } from 'shared-smilebaby';
 
 export interface IAuthFlowManager {
     authorization: (

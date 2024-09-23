@@ -9,8 +9,8 @@ import {
     Post,
 } from '@nestjs/common';
 import { Roles } from '_decorators/Roles';
-import { IOrder } from 'shared-smilebaby/dist/types/order.types';
-import { UserRole } from 'shared-smilebaby/dist/types/user.types';
+import { IOrder } from 'shared-smilebaby';
+import { UserRole } from 'shared-smilebaby';
 import { DtoOrderCreate, DtoOrderUpdate } from './dto/order.dto';
 import { OrdersService } from './orders.service';
 

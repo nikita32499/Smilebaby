@@ -14,8 +14,8 @@ import { FilesService } from './files.service';
 import { Roles } from '_decorators/Roles';
 import { createSlug } from '_helpers/slug';
 import { Response } from 'express';
-import { TFileUploadResponse } from 'shared-smilebaby/dist/types/file.types';
-import { UserRole } from 'shared-smilebaby/dist/types/user.types';
+import { TFileUploadResponse } from 'shared-smilebaby';
+import { UserRole } from 'shared-smilebaby';
 
 @Controller()
 export class FilesController {

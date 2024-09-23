@@ -1,8 +1,8 @@
 import {
     EnumViewNames,
     IViewCreateUnion,
-} from 'shared-smilebaby/dist/types/view-custom.types';
-import { IView } from 'shared-smilebaby/dist/types/view.types';
+} from 'shared-smilebaby';
+import { IView } from 'shared-smilebaby';
 export interface IViewRepository {
     saveView: (createData: IViewCreateUnion) => Promise<IView | null>;
     getView: (name: EnumViewNames) => Promise<IView | null>;

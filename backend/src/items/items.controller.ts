@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { Roles } from '_decorators/Roles';
-import { UserRole } from 'shared-smilebaby/dist/types/user.types';
+import { UserRole } from 'shared-smilebaby';
 import { DtoItemCreate, DtoItemUpdate } from './dto/item.dto';
 import { ItemsService } from './items.service';
 

@@ -1,4 +1,4 @@
-import { IItem, IItemCreate, IItemUpdate } from 'shared-smilebaby/dist/types/item.types';
+import { IItem, IItemCreate, IItemUpdate } from 'shared-smilebaby';
 
 export interface IItemRepository {
     getAll: () => Promise<IItem[]>;

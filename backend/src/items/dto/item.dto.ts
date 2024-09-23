@@ -2,7 +2,7 @@ import { createZodDto } from 'nestjs-zod';
 import {
     SchemaItemCreate,
     SchemaItemUpdate,
-} from 'shared-smilebaby/dist/contract/item.contract';
+} from 'shared-smilebaby';
 
 export class DtoItemCreate extends createZodDto(SchemaItemCreate) {}
 

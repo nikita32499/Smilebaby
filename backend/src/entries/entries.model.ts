@@ -1,4 +1,4 @@
-import { EnumEntries, IEntriesBase } from 'shared-smilebaby/dist/types/entries.types';
+import { EnumEntries, IEntriesBase } from 'shared-smilebaby';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

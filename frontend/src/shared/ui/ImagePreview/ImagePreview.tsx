@@ -17,7 +17,7 @@ export const ImagePreviewComponent: FC = () => {
 
     const cancel = () =>
         setState((prev) => {
-            prev.imagePreview = null;
+            delete prev.imagePreview;
         });
 
     if (!imagePreview) return null;

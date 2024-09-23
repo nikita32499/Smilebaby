@@ -1,5 +1,5 @@
-import { EnumViewNames } from 'shared-smilebaby/dist/types/view-custom.types';
-import { IView } from 'shared-smilebaby/dist/types/view.types';
+import { EnumViewNames } from 'shared-smilebaby';
+import { IView } from 'shared-smilebaby';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()

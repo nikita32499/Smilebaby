@@ -1,0 +1,22 @@
+FROM node:20-alpine AS builder
+RUN npm i -g typescript
+
+WORKDIR /shared
+
+COPY shared/ .
+
+RUN npm i
+
+RUN npm run build
+
+WORKDIR /app
+
+COPY frontend/ .
+
+RUN rm -rf .next node_modules dist package-lock.json
+
+RUN npm i
+
+CMD ["sh", "-c","npm run build && npm run start"]
+
+# HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD [ "wget", "-q0", "http://localhost:3000/health" ]

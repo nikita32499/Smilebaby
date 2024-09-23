@@ -6,7 +6,7 @@ export type IOrder = {
     cart: IPurchaseBase[];
     phone: string;
     name: string;
-    email?: string | undefined;
+    email: string | null;
 
     createdAt: number;
 };

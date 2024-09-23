@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { SchemaJwtUserData } from 'shared-smilebaby/dist/contract/user.contract';
-import { IJwtUserData } from 'shared-smilebaby/dist/types/user.types';
+import { SchemaJwtUserData } from 'shared-smilebaby';
+import { IJwtUserData } from 'shared-smilebaby';
 import { IAuthRepository } from './types/AuthRepository.types';
 @Injectable()
 export class AuthService implements IAuthRepository {

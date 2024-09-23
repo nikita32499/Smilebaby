@@ -7,10 +7,10 @@ type TBehavior = 'hide_all';
 interface IPropsViewProvider extends PropsWithChildren {}
 
 type TStateImagePreview = {
-    imagePreview: {
+    imagePreview?: {
         file: File;
         apply: () => void;
-    } | null;
+    };
 };
 
 export interface IViewContext {
@@ -22,9 +22,7 @@ export const ViewContext = createContext<IViewContext>(null!);
 
 export const ViewProvider: FC<IPropsViewProvider> = (props) => {
     const { children } = props;
-    const [state, setState] = useImmerState<TStateImagePreview>({
-        imagePreview: null,
-    });
+    const [state, setState] = useImmerState<TStateImagePreview>({});
 
     return (
         <ViewContext.Provider

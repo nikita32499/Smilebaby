@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { TFileUpload } from 'shared-smilebaby/dist/types/file.types';
+import { TFileUpload } from 'shared-smilebaby';
 import { Repository } from 'typeorm';
 import { FileModel } from './files.model';
 

@@ -8,10 +8,10 @@ import {
     Post,
 } from '@nestjs/common';
 import { Roles } from '_decorators/Roles';
-import { UserRole } from 'shared-smilebaby/dist/types/user.types';
-import { EnumViewNames } from 'shared-smilebaby/dist/types/view-custom.types';
+import { UserRole } from 'shared-smilebaby';
+import { EnumViewNames } from 'shared-smilebaby';
 
-import { SchemaViewCreateUnion } from 'shared-smilebaby/dist/contract//view.contract';
+import { SchemaViewCreateUnion } from 'shared-smilebaby';
 import { ViewService } from './view.service';
 
 import { EnumValidationPipe } from '_pipes/EnumValidationPipe';

@@ -1,4 +1,4 @@
 import { createZodDto } from 'nestjs-zod'
-import { SchemaUserAuth } from 'shared-smilebaby/dist/contract/user.contract'
+import { SchemaUserAuth } from 'shared-smilebaby'
 
 export class DtoUserAuth extends createZodDto(SchemaUserAuth) {}

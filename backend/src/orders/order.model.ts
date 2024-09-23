@@ -1,5 +1,5 @@
 import { ColumnNumberTransformer } from '_helpers/typeOrm';
-import { IOrder } from 'shared-smilebaby/dist/types/order.types';
+import { IOrder } from 'shared-smilebaby';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -18,7 +18,7 @@ export class OrderModel implements IOrder {
         default: null,
         nullable: true,
     })
-    declare email?: string;
+    declare email: string;
 
     @Column({
         type: 'jsonb',

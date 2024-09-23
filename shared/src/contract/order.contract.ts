@@ -17,7 +17,7 @@ export const SchemaOrder = ZodSafe(
         cart: SchemaPurchaseBase.array(),
         phone: z.string(),
         name: z.string(),
-        email: z.string().optional(),
+        email: z.union([z.string(), z.null()]),
 
         createdAt: z.number(),
     }),

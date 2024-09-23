@@ -1,4 +1,4 @@
-import { IJwtUserData } from 'shared-smilebaby/dist/types/user.types';
+import { IJwtUserData } from 'shared-smilebaby';
 
 export interface IAuthRepository {
     hashPassword: (password: string) => Promise<string>;

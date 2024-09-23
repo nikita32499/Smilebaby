@@ -1,7 +1,7 @@
-'use server';
+ 
 
-import { SchemaUser } from 'shared-smilebaby/dist/contract/user.contract'
-import { IUser } from 'shared-smilebaby/dist/types/user.types'
+import { SchemaUser } from 'shared-smilebaby'
+import { IUser } from 'shared-smilebaby'
 
 export const getUser = async (id: number): Promise<IUser | null> => {
     const response = await fetch(`${process.env['API_URL']}/user/getById/${id}`, {

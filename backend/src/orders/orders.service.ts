@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { isUpdateSuccess } from '_helpers/typeOrm';
-import { IOrderCreate, IOrderUpdate } from 'shared-smilebaby/dist/types/order.types';
+import { IOrderCreate, IOrderUpdate } from 'shared-smilebaby';
 import { Repository } from 'typeorm';
 import { OrderModel } from './order.model';
 import { IOrderRepository } from './types/OrderRepository.types';
@@ -14,7 +14,12 @@ export class OrdersService implements IOrderRepository {
     ) {}
 
     async create(createData: IOrderCreate) {
-        return await this.Order.create(createData.createData);
+        const newOrder = await this.Order.create({
+            ...createData.createData,
+            email: createData.createData.email ?? undefined,
+        });
+        const result = await this.Order.save(newOrder);
+        return result;
     }
 
     async getAll() {
@@ -26,7 +31,10 @@ export class OrdersService implements IOrderRepository {
     }
 
     async update(updateOrder: IOrderUpdate) {
-        const result = await this.Order.update(updateOrder.id, updateOrder.update);
+        const result = await this.Order.update(updateOrder.id, {
+            ...updateOrder.update,
+            email: updateOrder.update.email ?? undefined,
+        });
         return isUpdateSuccess(result);
     }
 

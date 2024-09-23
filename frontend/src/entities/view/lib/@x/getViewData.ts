@@ -1,6 +1,6 @@
-'use server';
+ 
 
-import { EnumViewNames, IViewUnion } from 'shared-smilebaby/dist/types/view-custom.types';
+import { EnumViewNames, IViewUnion } from 'shared-smilebaby';
 
 export const getViewData = async (nameView: EnumViewNames): Promise<IViewUnion> => {
     const response = await fetch(`${process.env['API_URL']}/view/getView/${nameView}`, {

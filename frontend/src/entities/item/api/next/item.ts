@@ -1,6 +1,5 @@
-'server-only'
-import { SchemaItem } from 'shared-smilebaby/dist/contract/item.contract'
-import { IItem } from 'shared-smilebaby/dist/types/item.types'
+ 
+import { IItem, SchemaItem } from 'shared-smilebaby';
 
 export const nextGetAllItems = async (): Promise<IItem[]> => {
     const entries = await fetch(`${process.env['API_URL']!}/item/getAll`, {
@@ -8,9 +7,9 @@ export const nextGetAllItems = async (): Promise<IItem[]> => {
         next: {
             revalidate: 60,
         },
-    })
+    });
 
-    const data = await entries.json()
+    const data = await entries.json();
 
-    return SchemaItem.array().parse(data)
-}
+    return SchemaItem.array().parse(data);
+};

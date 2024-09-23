@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
-import { SchemaJwtUserData } from 'shared-smilebaby/dist/contract/user.contract';
-import { IJwtUserData } from 'shared-smilebaby/dist/types/user.types';
+import { SchemaJwtUserData } from 'shared-smilebaby';
+import { IJwtUserData } from 'shared-smilebaby';
 
 export const getUserData = (): IJwtUserData | null => {
     const token = Cookies.get('authorization');

@@ -1,3 +1,3 @@
-import { AdminLayout } from 'pages/Admin/AdminLayout';
+import { AdminLayout } from 'page/Admin/AdminLayout';
 
 export default AdminLayout;

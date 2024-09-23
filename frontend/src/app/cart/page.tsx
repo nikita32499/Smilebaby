@@ -1,3 +1,3 @@
-import { CartPage } from 'pages/Cart';
+import { CartPage } from 'page/Cart';
 
 export default CartPage;

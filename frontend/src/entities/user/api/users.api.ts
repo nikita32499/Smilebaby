@@ -5,8 +5,8 @@ import { ZodValidator } from 'shared/helpers/RTK-query';
 import {
     SchemaUser,
     SchemaUserArray,
-} from 'shared-smilebaby/dist/contract/user.contract';
-import { IUserCreate } from 'shared-smilebaby/dist/types/user.types';
+} from 'shared-smilebaby';
+import { IUserCreate } from 'shared-smilebaby';
 import { z } from 'zod';
 
 export const UserApi = createApi({

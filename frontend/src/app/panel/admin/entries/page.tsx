@@ -1,3 +1,3 @@
-import { EntriesPanelPage } from 'pages/Admin/Entries';
+import { EntriesPanelPage } from 'page/Admin/Entries';
 
 export default EntriesPanelPage;
