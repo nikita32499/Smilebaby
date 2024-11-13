@@ -1,3 +1,2 @@
-2024/09/14-15:23:26.421 42156 Reusing MANIFEST /app/Smilebaby/frontend/.vscode/chrome/Default/shared_proto_db/MANIFEST-000001
-2024/09/14-15:23:26.421 42156 Recovering log #3
-2024/09/14-15:23:26.426 42156 Reusing old log /app/Smilebaby/frontend/.vscode/chrome/Default/shared_proto_db/000003.log 
+2024/11/13-08:28:04.394 473f Creating DB /app/Smilebaby/frontend/.vscode/chrome/Default/shared_proto_db since it was missing.
+2024/11/13-08:28:04.549 473f Reusing MANIFEST /app/Smilebaby/frontend/.vscode/chrome/Default/shared_proto_db/MANIFEST-000001

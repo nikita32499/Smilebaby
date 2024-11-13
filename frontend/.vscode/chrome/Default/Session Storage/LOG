@@ -1,3 +1,2 @@
-2024/09/14-15:23:26.758 42186 Reusing MANIFEST /app/Smilebaby/frontend/.vscode/chrome/Default/Session Storage/MANIFEST-000001
-2024/09/14-15:23:26.759 42186 Recovering log #3
-2024/09/14-15:23:26.760 42186 Reusing old log /app/Smilebaby/frontend/.vscode/chrome/Default/Session Storage/000003.log 
+2024/11/13-08:28:04.162 4769 Creating DB /app/Smilebaby/frontend/.vscode/chrome/Default/Session Storage since it was missing.
+2024/11/13-08:28:04.325 4769 Reusing MANIFEST /app/Smilebaby/frontend/.vscode/chrome/Default/Session Storage/MANIFEST-000001

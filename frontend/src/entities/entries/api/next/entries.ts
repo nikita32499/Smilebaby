@@ -1,8 +1,9 @@
- 
-import { IEntriesUnion, SchemaEntriesUnion } from 'shared-smilebaby'
+import { IEntriesUnion, SchemaEntriesUnion } from 'shared-smilebaby';
+import { NEST_API_URL } from 'shared/config/constants';
 
 export const nextGetAllEntries = async (): Promise<IEntriesUnion[]> => {
-    const entries = await fetch(`${process.env['API_URL']}/entries/getAll`, {
+    if (process.env['NODE_MODE']! === 'build') return [];
+    const entries = await fetch(`${NEST_API_URL}/entries/getAll`, {
         method: 'GET',
     });
 

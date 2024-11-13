@@ -1,6 +1,7 @@
 import { getFinallyPrice } from 'entities/item/helper/cart';
 import { IPurchase } from 'entities/item/store/items.slice';
 import { OrderApi } from 'entities/order/api/order.api';
+import Image from 'next/image';
 import { CartContext } from 'page/Cart/model/context';
 import { ChangeEvent, useContext, useEffect } from 'react';
 import { IOrderCreate, SchemaOrderCreate } from 'shared-smilebaby';
@@ -40,7 +41,7 @@ const Form: FC<IPropsForm> = (props) => {
     return (
         <div className='flex flex-col max-w-[568px]'>
             <button className='U-center-content w-max ' onClick={goBack}>
-                <img src='/asserts/svg/right-arrow.svg' alt='' />
+                <Image src='/asserts/svg/right-arrow.svg' alt='' width={20} height={13} />
                 <span className='text-[16px] ml-[18px]'>Назад в корзину</span>
             </button>
 

@@ -1,0 +1,55 @@
+services:
+    nginx:
+        container_name: smilebaby-nginx
+        image: nikita32499/smilebaby-nginx:latest
+        build:
+            context: "./nginx/"
+            dockerfile: dockerfile
+        ports:
+            - '80:80'
+        depends_on:
+            nextjs:
+                condition: service_started
+        restart: always
+        
+    postgres:
+        container_name: smilebaby-postgres
+        image: postgres:16.4-alpine
+        expose:
+            - '5432'
+        env_file: .env.prod
+        volumes:
+            - /var/postgres_data:/var/lib/postgresql/data
+    
+    nestjs:
+        container_name: smilebaby-nestjs
+        image: nikita32499/smilebaby-nestjs:latest
+        build: 
+            context: '.'
+            dockerfile: './backend/dockerfile'
+            target: prod
+            args:
+              APPDIR: "backend"
+        expose:
+            - '3001'
+        env_file: .env.prod
+        depends_on:
+            postgres:
+                condition: service_started
+        restart: always
+    nextjs:
+        container_name: smilebaby-nextjs
+        image: nikita32499/smilebaby-nextjs:latest
+        build: 
+            context: './'
+            dockerfile: './frontend/dockerfile'
+            target: prod
+            args:
+              APPDIR: "frontend"
+        expose:
+            - '3000'
+        depends_on:
+            nestjs:
+                condition: service_started
+        restart: always
+        command: "sleep 999999"

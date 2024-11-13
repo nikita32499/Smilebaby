@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useAppSelector } from 'shared/hook/redux-hooks';
 import { CustomLink } from 'shared/ui/CustomLink';
 
@@ -38,10 +39,20 @@ export const HeaderWidget: FC = () => {
                     ))}
                 </div>
                 <a href='/' className='m-auto'>
-                    <img src='/asserts/svg/SmileBaby.svg' alt='' />
+                    <Image
+                        src='/asserts/svg/SmileBaby.svg'
+                        width={179}
+                        height={31}
+                        alt=''
+                    />
                 </a>
                 <CustomLink href={'/cart'} className='flex ml-auto relative'>
-                    <img src='/asserts/svg/korzina.svg' alt='' />
+                    <Image
+                        alt='s'
+                        height={19}
+                        width={19}
+                        src={'/asserts/svg/korzina.svg'}
+                    />
                     <span className='ml-[6px] text-[16px]'>Корзина</span>
 
                     {cartList.length > 0 && (

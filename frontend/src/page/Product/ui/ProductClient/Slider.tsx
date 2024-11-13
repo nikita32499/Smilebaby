@@ -21,7 +21,7 @@ export const Slider: FC<IPropsSlider> = (props) => {
     return (
         <div className='flex gap-[8px] '>
             <img
-                src={bigImage}
+                src={bigImage ?? ''}
                 alt=''
                 className='max-h-[407px] rounded-[10px] shadow-lg'
             />

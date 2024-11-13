@@ -1,4 +1,5 @@
 import { IPurchase } from 'entities/item/store/items.slice';
+import Image from 'next/image';
 import { useActions } from 'shared/hook/redux-hooks';
 import { GalkaButton } from 'shared/ui/GalkaButton';
 
@@ -70,12 +71,12 @@ export const CartElement: FC<IPropsCartElement> = (props) => {
                 </span>
 
                 {maxQuantity > 1 ? (
-                    <div className=' flex w-max h-[32px] rounded-[4px] border-[1px] border-[#E5E5E5] mt-auto mb-[40px] *:w-[32px] shadow-boxShadowButton'>
+                    <div className=' flex w-max h-[32px] rounded-[4px] border-[1px] border-[#E5E5E5] mt-auto mb-[40px] *:w-[32px] shadow-boxShadowButton '>
                         <button
                             className={
                                 purchase.quantity === 1
-                                    ? 'opacity-0 pointer-events-none'
-                                    : ''
+                                    ? ' text-[#bbb]  pointer-events-none'
+                                    : 'font-bold text-[18px]'
                             }
                             onClick={decrimentCount}
                         >
@@ -85,8 +86,8 @@ export const CartElement: FC<IPropsCartElement> = (props) => {
                         <button
                             className={
                                 purchase.quantity === maxQuantity
-                                    ? 'opacity-0 pointer-events-none'
-                                    : ''
+                                    ? ' text-[#bbb] pointer-events-none'
+                                    : 'font-bold text-[18px]'
                             }
                             onClick={incrimentCount}
                         >
@@ -107,7 +108,7 @@ export const CartElement: FC<IPropsCartElement> = (props) => {
                 className='col-start-4 col-end-5 row-span-1 self-end justify-self-end shadow-boxShadowButton bg-white p-[4px] rounded-[4px]'
                 onClick={deletePurchaseHandler}
             >
-                <img src={'/asserts/svg/musorka.svg'} alt='' />
+                <Image src={'/asserts/svg/musorka.svg'} alt='' width={16} height={16} />
             </button>
         </div>
     );

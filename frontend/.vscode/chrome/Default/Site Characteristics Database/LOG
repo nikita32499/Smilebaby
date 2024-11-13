@@ -1,3 +1,2 @@
-2024/09/14-15:23:25.962 42151 Reusing MANIFEST /app/Smilebaby/frontend/.vscode/chrome/Default/Site Characteristics Database/MANIFEST-000001
-2024/09/14-15:23:25.962 42151 Recovering log #3
-2024/09/14-15:23:25.962 42151 Reusing old log /app/Smilebaby/frontend/.vscode/chrome/Default/Site Characteristics Database/000003.log 
+2024/11/13-08:28:04.024 473f Creating DB /app/Smilebaby/frontend/.vscode/chrome/Default/Site Characteristics Database since it was missing.
+2024/11/13-08:28:04.153 473f Reusing MANIFEST /app/Smilebaby/frontend/.vscode/chrome/Default/Site Characteristics Database/MANIFEST-000001

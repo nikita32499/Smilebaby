@@ -1,6 +1,5 @@
- 
-
 import { nextGetAllEntries } from 'entities/entries';
+import Image from 'next/image';
 
 import { IEntriesSection } from 'shared-smilebaby';
 import { mapSECTION } from 'shared/helpers/entries';
@@ -12,8 +11,11 @@ export const SectionWidget = async () => {
     return (
         <div className='flex    gap-[24px] items-center justify-center'>
             <CustomLink href={'/store/'} className='flex flex-col items-center'>
-                <img
+                <Image
                     src={'/asserts/svg/SmileBaby.svg'}
+                    width={80}
+                    height={80}
+                    alt={'Главная'}
                     className='rounded-[100px] w-[80px] h-[80px] bg-[#D9D9D9] '
                 />
                 <span className='mt-[18px] font-bold'>Все товары</span>
@@ -38,6 +40,9 @@ const EntryElement: FC<IPropsEntry> = (props) => {
             className='flex flex-col items-center'
         >
             <img
+                height={80}
+                width={80}
+                alt={`Раздел ${entry.value}}`}
                 src={entry.data.img}
                 className='rounded-[100px] w-[80px] h-[80px] bg-[#D9D9D9]'
             />

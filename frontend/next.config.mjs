@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     reactStrictMode: true,
-    eslint: {
-        ignoreDuringBuilds: true, // Отключает ESLint при сборке
-    },
+    // eslint: {
+    //     ignoreDuringBuilds: true, // Отключает ESLint при сборке
+    // },
 
     // experimental: {
     //     esmExternals: 'loose',
@@ -19,7 +19,7 @@ const nextConfig = {
         'rc-tree',
         'rc-table',
     ],
-    output: 'standalone',
+    // output: 'standalone',
 };
 
 export default nextConfig;

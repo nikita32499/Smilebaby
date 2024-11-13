@@ -1,27 +1,50 @@
+import Image from 'next/image';
 import { CustomLink } from 'shared/ui/CustomLink';
 
 export const Footer = () => {
     return (
-        <div className='flex bottom-0 bg-[#1C1C1E] w-full'>
+        <footer className='flex bottom-0 bg-[#1C1C1E] w-full'>
             <div className='grid grid-cols-2 grid-rows-3-max m-auto max-w-[var(--max-site-width)] w-full pt-[30px]'>
                 <div className='flex flex-col gap-[10px] items-start'>
-                    <img
+                    <Image
                         src='/asserts/svg/footer/SmileBaby.svg'
                         alt=''
-                        className='h-[35px]'
+                        width={179}
+                        height={31}
+                        className='!h-[35px]'
                     />
                     <div className='flex gap-[6px]'>
                         <button>
-                            <img src='/asserts/svg/footer/telegram.svg' alt='' />
+                            <Image
+                                src='/asserts/svg/footer/telegram.svg'
+                                alt=''
+                                width={31}
+                                height={31}
+                            />
                         </button>
                         <button>
-                            <img src='/asserts/svg/footer/vk.svg' alt='' />
+                            <Image
+                                src='/asserts/svg/footer/vk.svg'
+                                alt=''
+                                width={31}
+                                height={31}
+                            />
                         </button>
                         <button>
-                            <img src='/asserts/svg/footer/whatsup.svg' alt='' />
+                            <Image
+                                src='/asserts/svg/footer/whatsup.svg'
+                                alt=''
+                                width={31}
+                                height={31}
+                            />
                         </button>
                         <button>
-                            <img src='/asserts/svg/footer/youtube.svg' alt='' />
+                            <Image
+                                src='/asserts/svg/footer/youtube.svg'
+                                alt=''
+                                width={31}
+                                height={31}
+                            />
                         </button>
                     </div>
                 </div>
@@ -42,6 +65,6 @@ export const Footer = () => {
                     информационный характер.
                 </span>
             </div>
-        </div>
+        </footer>
     );
 };

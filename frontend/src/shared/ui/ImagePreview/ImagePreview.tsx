@@ -1,4 +1,4 @@
-import { Button, Image, Modal } from 'antd';
+import { Button, Modal } from 'antd';
 import { useContext, useEffect, useState } from 'react';
 import { getImageBlob } from 'shared/helpers/image';
 import { ViewContext } from '../ViewProvider/ViewProvider';
@@ -48,7 +48,7 @@ export const ImagePreviewComponent: FC = () => {
                 </Button>,
             ]}
         >
-            {src && <Image src={src} alt='Предпросмотр изображения' />}
+            {src && <img src={src} alt='Предпросмотр изображения' />}
         </Modal>
     );
 };

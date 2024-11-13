@@ -5,6 +5,7 @@ interface IPropsGalkaButton {
 }
 
 import cn from 'classnames';
+import Image from 'next/image';
 
 export const GalkaButton: FC<IPropsGalkaButton> = (props) => {
     const { isActive, onClick, classNames = '' } = props;
@@ -13,7 +14,9 @@ export const GalkaButton: FC<IPropsGalkaButton> = (props) => {
             className={cn('h-[20px] w-[20px] border-black border-[1px] ', classNames)}
             onClick={onClick}
         >
-            {isActive() && <img src='/asserts/svg/galka.svg' alt='' />}
+            {isActive() && (
+                <Image src='/asserts/svg/galka.svg' alt='' width={20} height={20} />
+            )}
         </button>
     );
 };

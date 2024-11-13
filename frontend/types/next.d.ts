@@ -14,8 +14,6 @@ declare type UiState = {
 };
 declare module '@ant-design/icons';
 
-declare global{
-    interface RequestInit{
-        
-    }
+declare global {
+    interface RequestInit {}
 }

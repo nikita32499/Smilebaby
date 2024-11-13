@@ -1,3 +1,2 @@
-2024/09/14-15:23:25.933 42151 Reusing MANIFEST /app/Smilebaby/frontend/.vscode/chrome/Default/Sync Data/LevelDB/MANIFEST-000001
-2024/09/14-15:23:25.958 42151 Recovering log #3
-2024/09/14-15:23:25.959 42151 Reusing old log /app/Smilebaby/frontend/.vscode/chrome/Default/Sync Data/LevelDB/000003.log 
+2024/11/13-08:28:04.020 4733 Creating DB /app/Smilebaby/frontend/.vscode/chrome/Default/Sync Data/LevelDB since it was missing.
+2024/11/13-08:28:04.153 4733 Reusing MANIFEST /app/Smilebaby/frontend/.vscode/chrome/Default/Sync Data/LevelDB/MANIFEST-000001

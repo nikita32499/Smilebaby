@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface IPropsFlagPanelFilter {
     options: {
         text: string;
@@ -21,7 +23,12 @@ export const FlagPanelFilter: FC<IPropsFlagPanelFilter> = (props) => {
                         <button onClick={option.func} className='flex '>
                             <div className='h-[20px] w-[20px] border-[#000] border-[1px]'>
                                 {option.isActive() && (
-                                    <img src='/asserts/svg/galka.svg' alt='' />
+                                    <Image
+                                        src='/asserts/svg/galka.svg'
+                                        alt=''
+                                        width={20}
+                                        height={20}
+                                    />
                                 )}
                             </div>
                             <span className='ml-[9px]'>{option.text}</span>

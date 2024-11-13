@@ -1,0 +1,62 @@
+FROM node:20-slim as dev
+
+ARG APPDIR
+
+ENV NODE_MODE=dev
+
+RUN apt-get update && apt-get install -y openssh-server nano net-tools
+
+RUN echo "root:qwerty" | chpasswd
+RUN sed -i 's/^#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+RUN sed -i 's/^#PasswordAuthentication.*/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+RUN npm install -g typescript
+
+WORKDIR /app
+
+COPY ${APPDIR}/package*.json .
+
+RUN npm ci
+
+COPY ${APPDIR} .
+
+RUN touch .env
+
+EXPOSE 3000 22
+
+CMD ["sh", "./docker-dev-launcher.sh"]
+
+FROM dev AS build
+
+ENV NODE_MODE=build
+
+RUN rm /app/.env
+
+WORKDIR /shared
+
+COPY shared /shared
+
+RUN npm ci
+
+RUN npm run build
+
+WORKDIR /app
+
+RUN npm run build
+
+FROM node:20-slim as prod
+
+ENV NODE_MODE=prod
+
+WORKDIR /app
+
+COPY --from=build /app/node_modules /app/node_modules
+COPY --from=build /app/.next /app/.next
+
+COPY --from=build shared/package.json /shared/package.json
+COPY --from=build shared/dist /shared/dist
+COPY --from=build shared/node_modules /shared/node_modules
+
+CMD ["/app/node_modules/.bin/next","start"]
+
+# HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD [ "wget", "-q0", "http://localhost:3000/health" ]

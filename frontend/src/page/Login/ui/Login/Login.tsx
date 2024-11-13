@@ -3,7 +3,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button, Card, Flex, Form, Input, Layout, Typography } from 'antd';
+import { Button, Form, Input, Layout, Typography } from 'antd';
 import Title from 'antd/es/typography/Title';
 import { useErrorHookForm } from 'shared/hook/useErrorHookForm';
 
@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 import { useActions } from 'shared/hook/redux-hooks';
 
 import { UserApi } from 'entities/user/';
+import Image from 'next/image';
 
 const { Text } = Typography;
 
@@ -69,19 +70,20 @@ export const Login: FC = () => {
     };
 
     return (
-        <Card style={{ maxWidth: '400px' }}>
+        <div className='max-w-[400px]'>
             <Form
                 onSubmitCapture={form.handleSubmit(onSubmit)}
                 // style={{ margin: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
             >
-                <Flex vertical align='center'>
-                    <img height={50} width={50} src='/favicon.ico' alt='' />
+                <div className='flex'>
+                    <Image src='/favicon.ico' alt='' width={50} height={50} />
                     <Title>{window.location.hostname}</Title>
-                </Flex>
+                </div>
                 <Form.Item
                     name='login'
                     label='Логин'
                     rules={[{ required: true, message: '' }]}
+                    className='flex justify-start'
                 >
                     <Controller
                         name='login'
@@ -113,6 +115,6 @@ export const Login: FC = () => {
                     </Button>
                 </Form.Item>
             </Form>
-        </Card>
+        </div>
     );
 };

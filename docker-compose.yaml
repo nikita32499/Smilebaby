@@ -4,14 +4,28 @@ services:
         build:
             context: "./nginx/"
             dockerfile: dockerfile
+            args:
+              WORKDIR: "."
         ports:
             - '80:80'
         depends_on:
-            - nextjs
+            nextjs:
+                condition: service_started
+        restart: always
+        develop:
+          watch:
+            - path: ./nginx/nginx.conf 
+              target: /etc/nginx/nginx.conf
+              action: sync+restart
+            - path: ./nginx/route.conf 
+              target: /etc/nginx/conf.d/default.conf
+              action: sync+restart
+        
         
     postgres:
         container_name: smilebaby_postgres
         image: postgres:16.4-alpine
+        restart: always
         expose:
             - '5432'
         ports:
@@ -24,34 +38,55 @@ services:
         container_name: smilebaby_nestjs
         build: 
             context: './backend/'
-            dockerfile: dockerfile.dev
+            dockerfile: dockerfile
+            target: dev
+            args:
+              APPDIR: "."
+
+        restart: always
         expose:
             - '3001'
         ports:
           - '34560:34560'
         env_file: .env.dev
         depends_on:
-            - postgres
+            postgres:
+                condition: service_started
+        develop:
+          watch:
+            - path: ./backend/
+              action: sync
+              target: /app
+              ignore:
+                - node_modules
+                - dist
         volumes:
-        - ./backend/src:/app/src
-        - ./backend/types:/backend/types
         - ./shared/:/shared:ro
     nextjs:
         container_name: smilebaby_nextjs
         build: 
             context: './frontend/'
-            dockerfile: dockerfile.dev
+            dockerfile: dockerfile
+            target: dev
+            args:
+              APPDIR: "."
         expose:
             - '3000'
         ports:
           - "2222:22"
+          - "9229:9229"
+        restart: always
         depends_on:
-            - nestjs
+            nestjs:
+                condition: service_started
+        develop:
+          watch:
+            - path: ./frontend/
+              action: sync
+              target: /app
+              ignore:
+                - node_modules
+                - .next
         volumes:
-        - ./frontend/src:/app/src
-        - ./frontend/public:/app/public
-        - ./frontend/types:/app/types
-        - ./frontend/next.config.mjs:/app/next.config.mjs
-        - ./frontend/postcss.config.js:/app/postcss.config.js
         - ./shared/:/shared:ro
         env_file: .env.dev

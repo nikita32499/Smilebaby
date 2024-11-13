@@ -1,4 +1,5 @@
 import cn from 'classnames';
+import Image from 'next/image';
 import { PropsWithChildren } from 'react';
 import { IItem } from 'shared-smilebaby';
 import { useActions, useAppSelector } from 'shared/hook/redux-hooks';
@@ -52,7 +53,7 @@ const FilterButton: FC<IPropsFilterButton> = (props) => {
                 <div className='px-[9px]'>
                     <span className={active ? 'text-[#fff] ' : ''}>{text}</span>
 
-                    <img
+                    <Image
                         className='inline ml-[7px]'
                         src={
                             active
@@ -60,6 +61,8 @@ const FilterButton: FC<IPropsFilterButton> = (props) => {
                                 : '/asserts/svg/rowToDownBlack.svg'
                         }
                         alt=''
+                        width={12}
+                        height={7}
                     />
                 </div>
                 <div style={{ transform: 'translateY(9px)' }}>

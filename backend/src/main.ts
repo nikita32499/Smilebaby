@@ -11,7 +11,6 @@ import { z } from 'zod';
 dotenv.config();
 
 z.object({
-    NEST_PORT: z.number(),
     JWT_SECRET_KEY: z.string(),
     ACCESS_TOKEN: z.string(),
     POSTGRES_HOST: z.string(),
@@ -21,7 +20,6 @@ z.object({
     POSTGRES_DATABASE: z.string(),
 }).parse({
     ...process.env,
-    NEST_PORT: parseInt(process.env['NEST_PORT']!),
     POSTGRES_PORT: parseInt(process.env['POSTGRES_PORT']!),
 });
 
@@ -33,7 +31,7 @@ async function bootstrap() {
 
     app.useGlobalPipes(new ZodValidationPipe());
 
-    await app.listen(Number(process.env['NEST_PORT']));
+    await app.listen(3001);
 }
 
 bootstrap();
