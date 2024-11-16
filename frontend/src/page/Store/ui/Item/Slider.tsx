@@ -1,5 +1,7 @@
 import cn from 'classnames';
+import { useEffect } from 'react';
 import { IItem } from 'shared-smilebaby';
+import { ImagePreloader } from 'shared/helpers/ImagePreloader';
 import { useImmerState } from 'shared/hook/useImmerState';
 
 interface IPropsSlider {
@@ -18,6 +20,12 @@ export const Slider: FC<IPropsSlider> = (props) => {
     });
 
     const images = [item.img_main, ...item.img_prev];
+
+    useEffect(() => {
+        for (const img of images) {
+            ImagePreloader({ url: img });
+        }
+    }, []);
 
     return (
         <div className='group grid grid-cols-1 grid-rows-1'>

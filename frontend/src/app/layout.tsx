@@ -2,6 +2,7 @@ import { PropsWithChildren } from 'react';
 import ErrorBoundary from 'shared/ui/ErrorBoundary/ErrorBoundary';
 import { HeaderWidget } from 'widgets/Header';
 import ReduxProvider from './_providers/ReduxProvider';
+import './_style/animate.scss';
 import './_style/index.css';
 import './_style/layer.css';
 

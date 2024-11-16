@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
 import ReactSlider from 'react-slider';
 import { useImmerState } from 'shared/hook/useImmerState';
 interface PriceRangeSliderProps {
@@ -24,15 +24,8 @@ export const PriceRangeSlider: React.FC<PriceRangeSliderProps> = (props) => {
         state.maxPriceValue > props.absoluteMaxPrice
             ? props.absoluteMaxPrice
             : state.maxPriceValue;
-    const updatePriceFilter = () => {
+    const updatePriceFilter = useCallback(() => {
         props.onPriceChange(state.minPriceValue, state.maxPriceValue);
-    };
-    useEffect(() => {
-        window.addEventListener('mouseup', updatePriceFilter);
-
-        return () => {
-            window.removeEventListener('mouseup', updatePriceFilter);
-        };
     }, []);
 
     const minDistance = (props.absoluteMaxPrice - props.absoluteMinPrice) / 100;
@@ -55,13 +48,16 @@ export const PriceRangeSlider: React.FC<PriceRangeSliderProps> = (props) => {
                     min={props.absoluteMinPrice}
                     max={props.absoluteMaxPrice}
                     minDistance={minDistance}
-                    onChange={([min, max]) => {
+                    onAfterChange={([min, max]) => {
                         if (min === undefined || max === undefined) throw new Error();
                         setState((prev) => {
+                            // prev.maxPriceValue = max;
+                            // prev.minPriceValue = min;
                             prev.maxPriceValue = max;
                             prev.minPriceValue = min;
                         });
                         // props.onPriceChange(min, max);
+                        updatePriceFilter();
                     }}
                 />
 

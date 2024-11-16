@@ -20,6 +20,6 @@ export const ProductPage: FC<IPropsProductPage> = async (props) => {
             <ProductClient item={currentItem} />
         </div>
     ) : (
-        <div>Товар не найден</div>
+        <div className='m-auto w-max text-[28px]'>Товар не найден</div>
     );
 };

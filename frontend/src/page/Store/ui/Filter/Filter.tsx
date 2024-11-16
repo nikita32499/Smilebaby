@@ -32,9 +32,11 @@ const FilterButton: FC<IPropsFilterButton> = (props) => {
     });
 
     const handleOutsideClick = () => {
-        setState((prev) => {
-            prev.flow.open = false;
-        });
+        if (state.flow.open === true) {
+            setState((prev) => {
+                prev.flow.open = false;
+            });
+        }
     };
 
     return (
@@ -46,7 +48,7 @@ const FilterButton: FC<IPropsFilterButton> = (props) => {
                 )}
                 onClick={() => {
                     setState((prev) => {
-                        prev.flow.open = !prev.flow.open;
+                        prev.flow.open = true;
                     });
                 }}
             >

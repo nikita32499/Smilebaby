@@ -1,12 +1,10 @@
-import { getUser } from 'entities/user/lib/@x/getUser'
-import { validateToken } from 'entities/user/lib/@x/validateToken'
-import { NextRequest, NextResponse } from 'next/server'
+import { getUser } from 'entities/user/lib/@x/getUser';
+import { validateToken } from 'entities/user/lib/@x/validateToken';
+import { NextRequest, NextResponse } from 'next/server';
 
 function notFound(request: NextRequest) {
     return NextResponse.error();
 }
-
-
 
 export async function middleware(request: NextRequest) {
     const token = request.cookies.get('authorization');

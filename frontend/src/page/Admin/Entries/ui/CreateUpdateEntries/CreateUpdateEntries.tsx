@@ -4,13 +4,11 @@ import { Button, Card, Form, Image, Input, Select, Space, Typography } from 'ant
 import Title from 'antd/es/typography/Title';
 import { EntriesApi } from 'entities/entries';
 import {
-    SchemaEntriesCreate,
-    SchemaEntriesUpdate,
-} from 'shared-smilebaby';
-import {
     EnumEntries,
     IEntriesUnion,
     IEntriesUpsertData,
+    SchemaEntriesCreate,
+    SchemaEntriesUpdate,
 } from 'shared-smilebaby';
 import { useImmerState } from 'shared/hook/useImmerState';
 import { UploadImage } from 'shared/ui/UploadImage/UploadImage';

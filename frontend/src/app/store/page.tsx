@@ -1,3 +1,8 @@
-import { StorePage } from 'page/Store';
+// import { StorePage } from 'page/Store';
 
-export default () => <StorePage params={{ sectionSlug: '' }} />;
+import LoadingStore from './loading';
+
+// export default () => <StorePage params={{ sectionSlug: '' }} />;
+
+
+export default LoadingStore;

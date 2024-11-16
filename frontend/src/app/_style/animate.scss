@@ -1,0 +1,21 @@
+@tailwind utilities;
+@layer utilities {
+    @keyframes keyframesSkeletonLoading {
+        0%,
+        70% {
+            background-position: 200%;
+        }
+        100% {
+            background-position: -100%;
+        }
+    }
+    .skeletonBlock {
+        box-shadow: 0 0 5px #eaeaea;
+        animation: keyframesSkeletonLoading 1s linear infinite;
+        background: linear-gradient(-45deg, #eaeaea 40%, #fff 50%, #eaeaea 60%), #eaeaea;
+
+        background-size: 200%;
+        background-position-y: center;
+        background-repeat: no-repeat;
+    }
+}

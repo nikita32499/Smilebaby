@@ -6,7 +6,7 @@ services:
             context: "./nginx/"
             dockerfile: dockerfile
         ports:
-            - '80:80'
+            - '8080:80'
         depends_on:
             nextjs:
                 condition: service_started
@@ -46,10 +46,10 @@ services:
             target: prod
             args:
               APPDIR: "frontend"
+        
         expose:
             - '3000'
         depends_on:
             nestjs:
                 condition: service_started
         restart: always
-        command: "sleep 999999"

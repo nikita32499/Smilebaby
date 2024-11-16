@@ -5,6 +5,9 @@ import { mapSECTION } from 'shared/helpers/entries';
 
 export default StorePage;
 
+export const revalidate = 60;
+
+// export const dynamicParams = true;
 // type PageProps = React.ComponentProps<typeof StorePage>;
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -18,6 +21,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     return {
         paths,
-        fallback: false,
+        fallback: true,
     };
 };

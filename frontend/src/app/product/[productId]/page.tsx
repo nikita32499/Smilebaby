@@ -1,8 +1,14 @@
 import { nextGetAllItems } from 'entities/item';
 import { GetStaticPaths } from 'next';
-import { ProductPage } from 'page/Product';
+import { LoadingProductPage } from 'page/Product/ui/_Loading/LoadingProductPage';
 
-export default ProductPage;
+// export default ProductPage;
+
+export default LoadingProductPage;
+
+export const revalidate = 60;
+
+// export const dynamicParams = true;
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const itemList = await nextGetAllItems();
@@ -15,6 +21,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     return {
         paths,
-        fallback: false,
+        fallback: true,
     };
 };

@@ -21,7 +21,7 @@ export const SectionWidget = async () => {
                 <span className='mt-[18px] font-bold'>Все товары</span>
             </CustomLink>
             {mapSECTION(entries).map((entry) => (
-                <EntryElement entry={entry} />
+                <EntryElement entry={entry} key={entry.id} />
             ))}
         </div>
     );

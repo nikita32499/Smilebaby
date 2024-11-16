@@ -35,7 +35,7 @@ export const HeaderWidget: FC = () => {
             <div className='grid grid-cols-3 items-center max-w-[var(--max-site-width)]  h-[103px] m-auto'>
                 <div className='flex gap-[15px]'>
                     {leftLinks.map((link) => (
-                        <LeftButton {...link} />
+                        <LeftButton {...link} key={link.href} />
                     ))}
                 </div>
                 <a href='/' className='m-auto'>

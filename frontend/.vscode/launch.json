@@ -10,22 +10,50 @@
             "type": "chrome",
             "url": "http://127.0.0.1",
             "webRoot": "${workspaceFolder}",
-
             "skipFiles": ["<node_internals>/**", "node_modules/**"],
             "userDataDir": "${workspaceFolder}/.vscode/chrome",
-            "runtimeArgs": [
-                // "--disable-extensions",
-                "--disable-gpu",
-                "--disable-dev-shm-usage",
-                "--no-sandbox",
-                "--disable-software-rasterizer"
-            ]
+            "runtimeArgs": []
         },
         {
             "name": "!!!!Next.js",
             "type": "node-terminal",
             "request": "launch",
             "command": "pkill -f '/app/node_modules/.bin/next dev' && sleep 2 && npm run dev"
+        },
+        {
+            "name": "Next.js: debug client-side",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:3000"
+        },
+        {
+            "name": "Next.js: debug client-side (Firefox)",
+            "type": "firefox",
+            "request": "launch",
+            "url": "http://127.0.0.1",
+            "reAttach": true,
+            "pathMappings": [
+                {
+                    "url": "webpack://_n_e/src/shared/hook",
+                    "path": "${workspaceFolder}/src/shared/hook"
+                },
+                {
+                    "url": "webpack://_n_e/src/shared/config",
+                    "path": "${workspaceFolder}/src/shared/config"
+                },
+                {
+                    "url": "webpack://_n_e/src/entities",
+                    "path": "${workspaceFolder}/src/entities"
+                },
+                {
+                    "url": "webpack://_n_e/src/page",
+                    "path": "${workspaceFolder}/src/page"
+                },
+                {
+                    "url": "webpack://_N_E",
+                    "path": "${workspaceFolder}"
+                }
+            ]
         }
     ]
 }
