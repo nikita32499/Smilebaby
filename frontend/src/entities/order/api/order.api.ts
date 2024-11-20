@@ -6,8 +6,8 @@ import {
     SchemaOrderArray,
 } from 'shared-smilebaby';
 import { REACT_BASE_API_URL } from 'shared/config/constants';
-import { SchemaResponseSuccess } from 'shared/contracts/response.contract';
 import { ZodValidator } from 'shared/helpers/RTK-query';
+import { SchemaResponseSuccess } from 'shared/schema/response.schema';
 import { z } from 'zod';
 
 export const OrderApi = createApi({

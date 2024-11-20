@@ -10,9 +10,12 @@ import { TopPanel } from './Panel/TopPanel';
 import { PaymentStep } from './PaymentStep/PaymentStep';
 
 const Cart: FC = () => {
-    const cart = useAppSelector((store) => store.itemsSlice.cart);
+    const cart = useAppSelector(
+        (store) => store.itemsSlice.cart,
+        (prevState, nextState) => prevState.length > 0 === nextState.length > 0,
+    );
 
-    return cart.length ? (
+    return cart.length > 0 ? (
         <div
             className='grid py-[20px] ml-auto'
             style={{

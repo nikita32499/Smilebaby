@@ -4,7 +4,7 @@ import { ProductClient } from './ProductClient/ProductClient';
 
 interface IPropsProductPage extends PageParams {
     params: {
-        productId: string;
+        productSlug: string;
     };
 }
 
@@ -13,7 +13,7 @@ export const ProductPage: FC<IPropsProductPage> = async (props) => {
 
     const items = await nextGetAllItems();
 
-    const currentItem = items.find((item) => item.id === Number(params.productId));
+    const currentItem = items.find((item) => item.slug === params.productSlug);
 
     return currentItem ? (
         <div>

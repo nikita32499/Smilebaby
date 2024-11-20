@@ -48,7 +48,7 @@ export const SidePanel: FC<IPropsSidePanel> = (props) => {
 
             <div className='mt-[80px]'>
                 <span className='text-[16px]'>Размер</span>
-                <div className='grid grid-cols-4 gap-[8px] w-max'>
+                <div className='grid grid-cols-4 gap-[8px] w-max mt-[5px]'>
                     {item.amount.map((amount) => {
                         return (
                             <button

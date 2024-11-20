@@ -9,14 +9,6 @@ import './_style/layer.css';
 import cn from 'classnames';
 import { Footer } from 'widgets/Footer';
 
-// const inter = Inter({ subsets: ['latin'], display: 'swap', variable: '--font-inter' });
-
-// const rubik = Rubik({
-//     subsets: ['latin'],
-//     display: 'swap',
-//     variable: '--font-rubik',
-// });
-
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
     return (
         <html lang='en'>

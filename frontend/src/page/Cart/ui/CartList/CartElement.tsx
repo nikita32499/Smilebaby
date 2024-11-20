@@ -1,6 +1,7 @@
 import { IPurchase } from 'entities/item/store/items.slice';
 import Image from 'next/image';
 import { useActions } from 'shared/hook/redux-hooks';
+import { CustomLink } from 'shared/ui/CustomLink';
 import { GalkaButton } from 'shared/ui/GalkaButton';
 
 interface IPropsCartElement {
@@ -25,14 +26,14 @@ export const CartElement: FC<IPropsCartElement> = (props) => {
         deletePurchase(purchase);
     };
 
-    const decrimentCount = () => {
+    const decrementCount = () => {
         upsertPurchase({
             ...purchase,
             quantity: purchase.quantity - 1,
         });
     };
 
-    const incrimentCount = () => {
+    const incrementCount = () => {
         upsertPurchase({
             ...purchase,
             quantity: purchase.quantity + 1,
@@ -44,13 +45,7 @@ export const CartElement: FC<IPropsCartElement> = (props) => {
         0;
 
     return (
-        <div
-            className='grid max-w-[600px] py-[15px] [&:not(:last-child)]:border-b-[1px] border-[#D9D9D9]'
-            style={{
-                gridTemplateColumns: 'max-content max-content 1fr max-content',
-                gridTemplateRows: 'repeat(2,max-content)',
-            }}
-        >
+        <>
             <GalkaButton
                 onClick={toggleAvailPurchase}
                 isActive={() => purchase.avail}
@@ -64,7 +59,9 @@ export const CartElement: FC<IPropsCartElement> = (props) => {
             />
 
             <div className='flex flex-col col-span-1 row-span-full px-[16px]'>
-                <span className='text-[16px]'>{item.name}</span>
+                <CustomLink href={`/product/${item.slug}`} className='text-[16px]'>
+                    {item.name}
+                </CustomLink>
                 <span className='text-[16px] mt-[8px]'>
                     <span className='text-[#888]'>Размер: </span>
                     <span>{purchase.size}</span>
@@ -78,7 +75,7 @@ export const CartElement: FC<IPropsCartElement> = (props) => {
                                     ? ' text-[#bbb]  pointer-events-none'
                                     : 'font-bold text-[18px]'
                             }
-                            onClick={decrimentCount}
+                            onClick={decrementCount}
                         >
                             -
                         </button>
@@ -89,7 +86,7 @@ export const CartElement: FC<IPropsCartElement> = (props) => {
                                     ? ' text-[#bbb] pointer-events-none'
                                     : 'font-bold text-[18px]'
                             }
-                            onClick={incrimentCount}
+                            onClick={incrementCount}
                         >
                             +
                         </button>
@@ -110,6 +107,6 @@ export const CartElement: FC<IPropsCartElement> = (props) => {
             >
                 <Image src={'/asserts/svg/musorka.svg'} alt='' width={16} height={16} />
             </button>
-        </div>
+        </>
     );
 };

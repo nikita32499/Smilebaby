@@ -1,3 +1,6 @@
+import { AnimatePresence, motion } from 'framer-motion';
+import { MotionPropsScale } from 'shared/config/motion';
+
 interface IPropsRadioPanelFilter {
     options: {
         text: string;
@@ -18,9 +21,14 @@ export const RadioPanelFilter: FC<IPropsRadioPanelFilter> = (props) => {
                     <div>
                         <div onClick={option.func} className='flex'>
                             <div className='flex items-center justify-center rounded-full bg-[#fff] border-[#000] border-[1px] w-[24px] h-[24px]'>
-                                {option.isActive() && (
-                                    <div className='w-[12px] h-[12px] rounded-full bg-[#000]'></div>
-                                )}
+                                <AnimatePresence>
+                                    {option.isActive() && (
+                                        <motion.div
+                                            {...MotionPropsScale}
+                                            className='w-[12px] h-[12px] rounded-full bg-[#000]'
+                                        ></motion.div>
+                                    )}
+                                </AnimatePresence>
                             </div>
                             <span className='ml-[12px] '>{option.text}</span>
                         </div>

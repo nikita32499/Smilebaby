@@ -9,7 +9,7 @@ export const ItemCard: FC<IPropsItemCard> = (props) => {
     const { item } = props;
     return (
         <CustomLink
-            href={`/product/${item.id}`}
+            href={`/product/${item.slug}`}
             className='group flex flex-col hover:shadow-md hover:card-box-on-focus'
         >
             <Slider item={item} />

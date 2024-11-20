@@ -6,7 +6,7 @@ export const PopUp: FC<IPropsPopUp> = (props) => {
     const { close } = props;
 
     return (
-        <div className='U-center-content  fixed w-screen h-screen bg-[#0008]'>
+        <div className='U-center-content top-0 left-0 fixed w-screen h-screen bg-[#0008]'>
             <div className='flex flex-col w-max bg-white shadow-boxShadowFilter p-[100px] rounded-[16px]'>
                 <span className=' text-[40px]'>Спасибо за покупку ❤️</span>
                 <button

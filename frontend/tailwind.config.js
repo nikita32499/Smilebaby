@@ -7,15 +7,15 @@ module.exports = {
                 rubik: ['var(--font-rubik)'],
                 inter: ['var(--font-inter)'],
             },
-            // screens: {
-            //     'max-sm': '500px',
-            // },
+            screens: {
+                'max-sm': { max: '500px' },
+                'max-md': { max: '768px' },
+                'max-lg': { max: '1024px' },
+            },
         },
     },
     variants: {},
 
-    // mode: 'jit',
-    // purge: ['./src/**/*.{js,ts,jsx,tsx}'],
     plugins: [
         function ({ addUtilities }) {
             const newUtilities = {
@@ -40,6 +40,16 @@ module.exports = {
             }
 
             addUtilities(newUtilities, ['responsive']);
+        },
+        function ({ addUtilities, theme, e }) {
+            addUtilities(
+                {
+                    '.position-[initial]': {
+                        position: 'initial',
+                    },
+                },
+                ['responsive'],
+            );
         },
     ],
 };

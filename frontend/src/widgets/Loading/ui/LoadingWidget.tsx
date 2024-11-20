@@ -1,20 +1,19 @@
-'use client';
 import { cn } from 'shared/helpers/classnames';
 import style from './style.module.scss';
-
-export const LoadingWidget: FC = () => {
+export const MainLoadingWidget: FC = () => {
     return (
-        <div className='flex justify-center items-center gap-[20px]'>
+        <div className='m-auto flex gap-[10px] justify-center items-center'>
             {Array(3)
                 .fill(null)
                 .map((_, index) => {
                     return (
-                        <div
+                        <span
                             className={cn(
-                                style['scaleAnimation'],
-                                'bg-black rounded-full w-[20px] h-[20px]',
+                                'rounded-full h-[20px] w-[20px] bg-[#d0d0d0] shadow-[0_0_5px_#d0d0d0]',
+                                style.scaleAnimation,
                             )}
-                        ></div>
+                            style={{ animationDelay: `${index * 0.085}s` }}
+                        ></span>
                     );
                 })}
         </div>

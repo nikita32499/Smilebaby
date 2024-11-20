@@ -1,3 +1,3 @@
-import { LoadingWidget } from 'widgets/Loading/ui/LoadingWidget';
+import { MainLoadingWidget } from 'widgets/Loading/ui/LoadingWidget';
 
-export default LoadingWidget;
+export default MainLoadingWidget;

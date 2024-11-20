@@ -43,7 +43,7 @@ const FilterButton: FC<IPropsFilterButton> = (props) => {
         <OutsideClickHandler onOutsideClick={handleOutsideClick} className='w-max'>
             <button
                 className={cn(
-                    'h-[35px]  w-max rounded-[5px] border-[#E5E5E5] border-[1px] relative',
+                    'h-[35px]  w-max rounded-[5px] border-[#E5E5E5] border-[1px]  ', //relative
                     active ? 'bg-[#000]' : 'bg-[#fff]',
                 )}
                 onClick={() => {
@@ -147,7 +147,7 @@ export const Filter: FC<IPropsFilter> = (props) => {
     });
 
     return (
-        <div className='flex gap-[10px]'>
+        <div className='flex gap-[10px] max-md:w-full max-md:flex-wrap relative'>
             <FilterButton
                 text={'По возрастанию цены'}
                 active={sortFilterValue !== 'default'}
@@ -201,7 +201,6 @@ export const Filter: FC<IPropsFilter> = (props) => {
             <FilterButton text={'Сезон'} active={seasonFilterValue.length > 0}>
                 <FlagPanelFilter options={seasonRecord} />
             </FilterButton>
-
             <ResetButton />
         </div>
     );

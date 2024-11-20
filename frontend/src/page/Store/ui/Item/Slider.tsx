@@ -30,7 +30,7 @@ export const Slider: FC<IPropsSlider> = (props) => {
     return (
         <div className='group grid grid-cols-1 grid-rows-1'>
             <img
-                className='col-[1/1] row-[1/1] rounded-md'
+                className='col-[1/1] row-[1/1] rounded-md max-md:rounded-none'
                 src={state.currentImg}
                 alt={item.name}
             />

@@ -49,7 +49,7 @@ const Form: FC<IPropsForm> = (props) => {
                 <span className='text-[40px]'>Оформление заказа</span>
                 <span className='text-[20px] mt-[12px]'>
                     Пожалуйста заполните форму, и с вами свяжуться для оформления заказа.
-                    Спасибо выбираете нас!
+                    Спасибо что выбираете нас!
                 </span>
             </div>
             <div className='flex flex-col *:h-[60px] *:border-b *:border-[#888]'>

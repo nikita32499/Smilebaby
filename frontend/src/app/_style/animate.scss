@@ -18,4 +18,10 @@
         background-position-y: center;
         background-repeat: no-repeat;
     }
+
+    * {
+        transition:
+            color,
+            background-color 0.25s ease;
+    }
 }

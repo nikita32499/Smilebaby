@@ -32,7 +32,17 @@
             "request": "launch",
             "url": "http://127.0.0.1",
             "reAttach": true,
+
+            // "firefoxArgs": ["-profile", "./.vscode/firefox"],
             "pathMappings": [
+                {
+                    "url": "webpack://_n_e/src/shared/lib/cssDevTool/lib",
+                    "path": "${workspaceFolder}/src/shared/lib/cssDevTool/lib"
+                },
+                {
+                    "url": "webpack://_n_e/src/shared/lib/cssDevTool.ts",
+                    "path": "${workspaceFolder}/src/shared/lib/cssDevTool.ts"
+                },
                 {
                     "url": "webpack://_n_e/src/shared/hook",
                     "path": "${workspaceFolder}/src/shared/hook"
@@ -51,6 +61,14 @@
                 },
                 {
                     "url": "webpack://_N_E",
+                    "path": "${workspaceFolder}"
+                },
+                {
+                    "url": "webpack://_n_e/src",
+                    "path": "${workspaceFolder}/src"
+                },
+                {
+                    "url": "webpack://_n_e",
                     "path": "${workspaceFolder}"
                 }
             ]

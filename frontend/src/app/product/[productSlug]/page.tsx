@@ -1,10 +1,8 @@
 import { nextGetAllItems } from 'entities/item';
 import { GetStaticPaths } from 'next';
-import { LoadingProductPage } from 'page/Product/ui/_Loading/LoadingProductPage';
+import { ProductPage } from 'page/Product';
 
-// export default ProductPage;
-
-export default LoadingProductPage;
+export default ProductPage;
 
 export const revalidate = 60;
 
@@ -15,7 +13,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
     const paths = itemList.map((item) => ({
         params: {
-            productId: item.id.toString(),
+            productSlug: item.slug,
         },
     }));
 

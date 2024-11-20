@@ -62,7 +62,7 @@ export const PriceRangeSlider: React.FC<PriceRangeSliderProps> = (props) => {
                 />
 
                 <div className='flex items-center justify-between mt-[40px] '>
-                    <div className='flex flex-col items-start '>
+                    <div className='flex flex-col items-start w-auto'>
                         <span className='text-[12px]'>Мин. цена</span>
                         <input
                             type='number'
@@ -73,7 +73,7 @@ export const PriceRangeSlider: React.FC<PriceRangeSliderProps> = (props) => {
                         />
                     </div>
                     <div className='bg-[#000] w-[15px] h-[1px]'></div>
-                    <div className='flex flex-col items-start'>
+                    <div className='flex flex-col items-start w-auto'>
                         <span className='text-[12px]'>Макс. цена</span>
                         <input
                             type='number'

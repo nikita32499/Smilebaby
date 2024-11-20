@@ -1,12 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { IUserCreate, SchemaUser, SchemaUserArray } from 'shared-smilebaby';
 import { REACT_BASE_API_URL } from 'shared/config/constants';
-import { SchemaResponseSuccess } from 'shared/contracts/response.contract';
 import { ZodValidator } from 'shared/helpers/RTK-query';
-import {
-    SchemaUser,
-    SchemaUserArray,
-} from 'shared-smilebaby';
-import { IUserCreate } from 'shared-smilebaby';
+import { SchemaResponseSuccess } from 'shared/schema/response.schema';
 import { z } from 'zod';
 
 export const UserApi = createApi({

@@ -1,15 +1,13 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { REACT_BASE_API_URL } from 'shared/config/constants';
-import { SchemaResponseSuccess } from 'shared/contracts/response.contract';
-import { ZodValidator } from 'shared/helpers/RTK-query';
-import {
-    SchemaEntriesArrayUnion,
-    SchemaEntriesUnion,
-} from 'shared-smilebaby';
 import {
     IEntriesCreate,
     IEntriesUpdate,
+    SchemaEntriesArrayUnion,
+    SchemaEntriesUnion,
 } from 'shared-smilebaby';
+import { REACT_BASE_API_URL } from 'shared/config/constants';
+import { ZodValidator } from 'shared/helpers/RTK-query';
+import { SchemaResponseSuccess } from 'shared/schema/response.schema';
 
 import { z } from 'zod';
 

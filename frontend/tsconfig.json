@@ -60,7 +60,8 @@
         "src/**/*.tsx",
         "types",
         ".next/types/**/*.ts",
-        "main.ts"
+        "main.ts",
+        "src/shared/lib/cssDevTool.js"
     ],
     "exclude": ["node_modules", ".next", "temp"]
 }
