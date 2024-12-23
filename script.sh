@@ -1,13 +1,5 @@
 #!/bin/bash
 
-if [ "$(id -u)" -ne 0 ]; then
-
-	echo "Требуются права администратора"
-
-	exit 1
-
-fi
-
 echo "Что вы хотите сделать?"
 echo "1 - Запуск в режиме разработки"
 echo "2 - Клонировать и подготовить проект для разработки"
@@ -51,6 +43,14 @@ elif [ "$choice" -eq 4 ]; then
 	docker push nikita32499/smilebaby-nextjs:latest
 
 elif [ "$choice" -eq 5 ]; then
+
+	if [ "$(id -u)" -ne 0 ]; then
+
+		echo "Требуются права администратора"
+
+		exit 1
+
+	fi
 
 	check_command() {
 		if command -v $1 &>/dev/null; then
