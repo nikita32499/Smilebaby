@@ -1,2 +1,12 @@
 .env*
 !.env.dev
+
+*.sql
+*.sql.gz
+*.log
+*.log.gz
+
+*.tar
+*.tar.gz
+
+docker-compose.production.yaml

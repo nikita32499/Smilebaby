@@ -5,6 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "firefox",
+            "request": "launch",
+            "name": "Launch My Firefox",
+            "url": "https://myurl",
+            "webRoot": "${workspaceFolder}",
+            "timeout": 5000,
+            "tmpDir": "/some/folder/of/yours/with/write/perms"
+        },
+
+        {
             "name": "!!!!!Launch Chrome",
             "request": "launch",
             "type": "chrome",
@@ -24,53 +34,20 @@
             "name": "Next.js: debug client-side",
             "type": "chrome",
             "request": "launch",
-            "url": "http://localhost:3000"
+            "url": "http://localhost:8080"
         },
         {
             "name": "Next.js: debug client-side (Firefox)",
             "type": "firefox",
             "request": "launch",
-            "url": "http://127.0.0.1",
+            "url": "http://127.0.0.1:8080",
             "reAttach": true,
-
-            // "firefoxArgs": ["-profile", "./.vscode/firefox"],
-            "pathMappings": [
-                {
-                    "url": "webpack://_n_e/src/shared/lib/cssDevTool/lib",
-                    "path": "${workspaceFolder}/src/shared/lib/cssDevTool/lib"
-                },
-                {
-                    "url": "webpack://_n_e/src/shared/lib/cssDevTool.ts",
-                    "path": "${workspaceFolder}/src/shared/lib/cssDevTool.ts"
-                },
-                {
-                    "url": "webpack://_n_e/src/shared/hook",
-                    "path": "${workspaceFolder}/src/shared/hook"
-                },
-                {
-                    "url": "webpack://_n_e/src/shared/config",
-                    "path": "${workspaceFolder}/src/shared/config"
-                },
-                {
-                    "url": "webpack://_n_e/src/entities",
-                    "path": "${workspaceFolder}/src/entities"
-                },
-                {
-                    "url": "webpack://_n_e/src/page",
-                    "path": "${workspaceFolder}/src/page"
-                },
-                {
-                    "url": "webpack://_N_E",
-                    "path": "${workspaceFolder}"
-                },
-                {
-                    "url": "webpack://_n_e/src",
-                    "path": "${workspaceFolder}/src"
-                },
-                {
-                    "url": "webpack://_n_e",
-                    "path": "${workspaceFolder}"
-                }
+            "profileDir": "${workspaceFolder}/.vscode/firefox-debug-profile",
+            "keepProfileChanges": true,
+            "firefoxArgs": [
+                "-profile",
+                "${workspaceFolder}/.vscode/firefox-debug-profile",
+                "-no-remote"
             ]
         }
     ]

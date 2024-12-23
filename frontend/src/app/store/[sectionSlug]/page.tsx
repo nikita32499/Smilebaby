@@ -1,5 +1,5 @@
 import { nextGetAllEntries } from 'entities/entries';
-import { GetStaticPaths } from 'next';
+import { GetStaticPaths, Metadata } from 'next';
 import { StorePage } from 'page/Store';
 import { mapSECTION } from 'shared/helpers/entries';
 
@@ -8,7 +8,26 @@ export default StorePage;
 export const revalidate = 60;
 
 // export const dynamicParams = true;
-// type PageProps = React.ComponentProps<typeof StorePage>;
+
+export async function generateMetadata({
+    params,
+}: {
+    params: { sectionSlug: string };
+}): Promise<Metadata> {
+    const sections = mapSECTION(await nextGetAllEntries());
+    const currentSection = sections.find(
+        (section) => section.data.slug === params.sectionSlug,
+    );
+
+    return {
+        title: currentSection
+            ? `${currentSection.value} | SmileBaby`
+            : 'Раздел SmileBaby',
+        description: currentSection
+            ? `${currentSection.value} | SmileBaby`
+            : 'Раздел SmileBaby',
+    };
+}
 
 export const getStaticPaths: GetStaticPaths = async () => {
     const sections = mapSECTION(await nextGetAllEntries());

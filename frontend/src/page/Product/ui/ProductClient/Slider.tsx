@@ -23,7 +23,7 @@ export const Slider: FC<IPropsSlider> = (props) => {
             <img
                 src={bigImage ?? ''}
                 alt=''
-                className='max-h-[407px] rounded-[10px] shadow-lg'
+                className='max-h-[407px] rounded-[10px] shadow-[0_0_10px_#888] '
             />
             <div className='flex flex-col gap-[8px] w-max'>
                 {otherImages.map((image) => {
@@ -31,7 +31,7 @@ export const Slider: FC<IPropsSlider> = (props) => {
                         <img
                             src={image}
                             alt=''
-                            className='h-[77px] rounded-[4px] shadow-lg'
+                            className='h-[77px] rounded-[4px] shadow-[0_0_10px_#999] '
                             onClick={() => {
                                 setState((prev) => {
                                     const index = prev.images.findIndex(

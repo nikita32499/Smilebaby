@@ -11,7 +11,7 @@ export const SectionWidget = async () => {
     return (
         <div className='flex    gap-[24px] items-center justify-center'>
             <CustomLink href={'/store/'} className='flex flex-col items-center '>
-                <div className='h-[80px] w-[80px] rounded-full shadow-md flex items-center'>
+                <div className='shadow-[0_0_20px_#838383] h-[80px] w-[80px] rounded-full  flex items-center'>
                     <IconSmileBaby width={80} />
                 </div>
                 <span className='mt-[18px] font-bold'>Все товары</span>
@@ -40,7 +40,7 @@ const EntryElement: FC<IPropsEntry> = (props) => {
                 width={80}
                 alt={`Раздел ${entry.value}}`}
                 src={entry.data.img}
-                className='rounded-[100px] w-[80px] h-[80px] bg-[#D9D9D9]'
+                className='shadow-[0_0_20px_#838383] rounded-[100px] w-[80px] h-[80px] bg-[#D9D9D9]'
             />
             <span className='mt-[18px]'>{entry.value}</span>
         </CustomLink>

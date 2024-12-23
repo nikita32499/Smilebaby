@@ -44,7 +44,7 @@ export const HeaderWidget: FC = () => {
     };
 
     return (
-        <div className='border-b-[1px] border-[#D9D9D9] '>
+        <div className='border-b-[1px] border-[#D9D9D9] shadow-[0_0_20px_#999]'>
             <div className='grid grid-cols-3 items-center max-w-[var(--max-site-width)]  h-[103px] max-sm:h-[52px] m-auto relative'>
                 <div
                     className={cn(

@@ -3,6 +3,7 @@ import { store } from 'app/_providers/store';
 import { ItemApi, useFilterItem } from 'entities/item';
 import { memo, useLayoutEffect } from 'react';
 import { IEntriesSection, IItem } from 'shared-smilebaby';
+import { useImagePreloader } from 'shared/hook/useImagePreloader';
 import { Filter } from '../Filter/Filter';
 import { ItemList } from '../Item/ItemList';
 interface IStateStore {
@@ -13,6 +14,10 @@ interface IStateStore {
 export const StoreClient: FC<IStateStore> = memo(
     (props) => {
         const { currentSection, items } = props;
+
+        const images = items.map((item) => [...item.img_main, ...item.img_prev]).flat();
+
+        const imagesPreloaded = useImagePreloader(images);
 
         useLayoutEffect(() => {
             store.dispatch(ItemApi.endpoints.getAll.initiate());

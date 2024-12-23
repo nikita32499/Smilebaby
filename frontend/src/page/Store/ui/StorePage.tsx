@@ -18,6 +18,8 @@ export const StorePage: FC<IPropsStorePage> = async (props) => {
     const sections = mapSECTION(await nextGetAllEntries());
     const currentSection = sections.find((section) => section.data.slug === sectionSlug);
 
+    
+
     return (
         <>
             <div>

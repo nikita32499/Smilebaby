@@ -20,7 +20,11 @@ services:
         env_file: .env.prod
         volumes:
             - /var/postgres_data:/var/lib/postgresql/data
-    
+        healthcheck:
+          test: ["CMD-SHELL", "pg_isready -U smilebaby -d smilebaby -h 127.0.0.1 || exit 1"]
+          interval: 5s
+          timeout: 5s
+          retries: 5 
     nestjs:
         container_name: smilebaby-nestjs
         image: nikita32499/smilebaby-nestjs:latest
@@ -35,7 +39,7 @@ services:
         env_file: .env.prod
         depends_on:
             postgres:
-                condition: service_started
+                condition: service_healthy
         restart: always
     nextjs:
         container_name: smilebaby-nextjs

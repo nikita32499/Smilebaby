@@ -1,12 +1,13 @@
 import { getFinallyPrice } from 'entities/item/helper/cart';
 import { IPurchase } from 'entities/item/store/items.slice';
 import { OrderApi } from 'entities/order/api/order.api';
-import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { CartContext } from 'page/Cart/model/context';
 import { ChangeEvent, useContext, useEffect } from 'react';
 import { IOrderCreate, SchemaOrderCreate } from 'shared-smilebaby';
 import { useAppSelector } from 'shared/hook/redux-hooks';
 import { useImmerState } from 'shared/hook/useImmerState';
+import { IconArrowLeftCircle } from 'shared/ui/Icons/IconArrowLeftCircle';
 import { PopUp } from '../PopUp/PopUp';
 
 // const SchemaFormPaymentStep = z.object({
@@ -41,7 +42,7 @@ const Form: FC<IPropsForm> = (props) => {
     return (
         <div className='flex flex-col max-w-[568px]'>
             <button className='U-center-content w-max ' onClick={goBack}>
-                <Image src='/asserts/svg/right-arrow.svg' alt='' width={20} height={13} />
+                <IconArrowLeftCircle />
                 <span className='text-[16px] ml-[18px]'>Назад в корзину</span>
             </button>
 
@@ -52,21 +53,26 @@ const Form: FC<IPropsForm> = (props) => {
                     Спасибо что выбираете нас!
                 </span>
             </div>
-            <div className='flex flex-col *:h-[60px] *:border-b *:border-[#888]'>
+            <div className='flex gap-[10px] flex-col *:h-[50px]  *:shadow-[0_1px_10px_#666] *:rounded-[10px]'>
                 <input
                     type='text'
                     placeholder='Имя*'
                     onChange={(e) => onChange(e, 'name')}
+                    pattern='[a-zA-Zа-яА-Я]{2,}'
+                    required
                 />
                 <input
                     type='text'
                     placeholder='Телефон*'
                     onChange={(e) => onChange(e, 'phone')}
+                    pattern='[0-9]{11}'
+                    required
                 />
                 <input
                     type='text'
                     placeholder='Почта (необязательно)'
                     onChange={(e) => onChange(e, 'email')}
+                    pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
                 />
             </div>
 
@@ -119,6 +125,8 @@ const Panel: FC<IPropsPanel> = (props) => {
 export const PaymentStep: FC = () => {
     const cart = useAppSelector((store) => store.itemsSlice.cart);
 
+    const router = useRouter();
+
     const [state, setState] = useImmerState<IStatePaymentStep>({
         formData: {},
         popUp: false,
@@ -133,7 +141,7 @@ export const PaymentStep: FC = () => {
         });
     };
 
-    const [createOrder] = OrderApi.useCreateMutation();
+    const [createOrder, { isLoading }] = OrderApi.useCreateMutation();
 
     const onSubmit = async () => {
         const validateData = SchemaOrderCreate.safeParse({
@@ -149,6 +157,10 @@ export const PaymentStep: FC = () => {
                 setState((prev) => {
                     prev.popUp = true;
                 });
+
+                setTimeout(() => {
+                    router.push('/');
+                }, 3000);
             }
         } else {
             setState((prev) => {

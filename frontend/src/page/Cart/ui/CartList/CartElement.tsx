@@ -55,7 +55,7 @@ export const CartElement: FC<IPropsCartElement> = (props) => {
             <img
                 src={item.img_main}
                 alt=''
-                className='w-[116px] h-[167px] col-span-1 row-span-full rounded-md shadow-md'
+                className='w-[116px] h-[167px] col-span-1 row-span-full rounded-md shadow-[0_0_10px_#888]'
             />
 
             <div className='flex flex-col col-span-1 row-span-full px-[16px]'>
@@ -68,7 +68,7 @@ export const CartElement: FC<IPropsCartElement> = (props) => {
                 </span>
 
                 {maxQuantity > 1 ? (
-                    <div className=' flex w-max h-[32px] rounded-[4px] border-[1px] border-[#E5E5E5] mt-auto mb-[40px] *:w-[32px] shadow-boxShadowButton '>
+                    <div className=' flex w-max h-[32px] rounded-[4px] border-[1px] border-[#E5E5E5] mt-auto mb-[40px] *:w-[32px] shadow-[0_0_10px_#888] '>
                         <button
                             className={
                                 purchase.quantity === 1

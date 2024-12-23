@@ -53,7 +53,7 @@ export const SidePanel: FC<IPropsSidePanel> = (props) => {
                         return (
                             <button
                                 className={cn(
-                                    'w-[64px] h-[48px] rounded-[4px]',
+                                    'shadow-[0_0_10px_#888] w-[64px] h-[48px] rounded-[4px]',
                                     itPurchase(amount.size)
                                         ? 'bg-black text-white border-0'
                                         : 'border-[1px] border-[#E5E5E5]',

@@ -43,7 +43,7 @@ const FilterButton: FC<IPropsFilterButton> = (props) => {
         <OutsideClickHandler onOutsideClick={handleOutsideClick} className='w-max'>
             <button
                 className={cn(
-                    'h-[35px]  w-max rounded-[5px] border-[#E5E5E5] border-[1px]  ', //relative
+                    'h-[35px]  w-max rounded-[5px] border-[#E5E5E5] border-[1px]  shadow-[0_0_10px_#999]', //relative
                     active ? 'bg-[#000]' : 'bg-[#fff]',
                 )}
                 onClick={() => {

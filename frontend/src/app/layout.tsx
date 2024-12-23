@@ -7,7 +7,14 @@ import './_style/index.css';
 import './_style/layer.css';
 
 import cn from 'classnames';
+import { Metadata } from 'next';
 import { Footer } from 'widgets/Footer';
+
+export const metadata: Metadata = {
+    icons: {
+        icon: '/favicon/favicon.ico',
+    },
+};
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
     return (

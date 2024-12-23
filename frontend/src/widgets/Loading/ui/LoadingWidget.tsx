@@ -9,7 +9,7 @@ export const MainLoadingWidget: FC = () => {
                     return (
                         <span
                             className={cn(
-                                'rounded-full h-[20px] w-[20px] bg-[#d0d0d0] shadow-[0_0_5px_#d0d0d0]',
+                                'rounded-full h-[20px] w-[20px] bg-[#989898] shadow-[0_0_10px_#888]',
                                 style.scaleAnimation,
                             )}
                             style={{ animationDelay: `${index * 0.085}s` }}
